@@ -1,0 +1,588 @@
+/* EGC Ekora Global Consulting Design System */
+
+:root {
+  /* Harmonized premium colors from mockups */
+  --primary-gold: #b5893b;
+  --primary-gold-hover: #9c732c;
+  --dark-purple: #1b0b30;
+  --dark-purple-light: #2d184d;
+  --dark-purple-deep: #0e051a;
+  --bg-cream: #fbfaf7;
+  --bg-beige: #f2efe9;
+  --text-dark: #2d2736;
+  --text-light: #fbfaf7;
+  --text-muted: #7c728a;
+  
+  /* Glassmorphism & Glow variables */
+  --glass-bg-light: rgba(255, 255, 255, 0.45);
+  --glass-bg-dark: rgba(27, 11, 48, 0.55);
+  --glass-border-light: rgba(181, 137, 59, 0.18);
+  --glass-border-dark: rgba(255, 255, 255, 0.08);
+  --gold-glow: rgba(181, 137, 59, 0.25);
+  
+  /* Fonts */
+  --font-serif: 'Montserrat', sans-serif; /* Display font for headings and prominent text */
+  --font-sans: 'Montserrat', sans-serif; /* Sans-serif font for body text and general content */
+  
+  /* Layout */
+  --max-width: 1440px;
+}
+
+/* Glassmorphism Utility Classes */
+.glass-panel-light {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: 0 8px 32px 0 rgba(13, 42, 82, 0.04);
+}
+
+.glass-panel-dark {
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border-dark);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.25);
+}
+
+.glow-orb-bg {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--bg-cream); /* Light background to prevent black sidebars */
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Global safety: prevent any element from causing horizontal overflow */
+img, video, svg, canvas, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mobile sticky bar safe-area bottom padding */
+@media (max-width: 680px) {
+  .app-container > main {
+    padding-bottom: 70px;
+  }
+}
+
+p {
+  text-align: inherit;
+}
+
+/* Base layout container for the page */
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-cream);
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Footer Reveal System ─────────────────────────────── */
+/* Main content sits above the fixed footer layer */
+.app-container > main {
+  position: relative;
+  z-index: 2;
+  background: var(--bg-cream);
+}
+
+/* Premium bottom shadow on content edge for "peel away" depth */
+.app-container > main::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.03) 40%,
+    rgba(0, 0, 0, 0.08) 70%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Reduced motion: disable all reveal transforms */
+@media (prefers-reduced-motion: reduce) {
+  .footer-reveal-fixed {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* Centered layout for mockup sections */
+.mockup-section {
+  position: relative;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  background-color: var(--bg-cream);
+}
+
+/* Image scaling to match relative coords */
+.mockup-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+/* Interactive hotspot overlays */
+.hotspot {
+  position: absolute;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  outline: none;
+  z-index: 10;
+  transition: all 0.25s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+/* Optional hover visual indicator for debug/ux helper */
+.hotspot-debug {
+  background-color: rgba(181, 137, 59, 0.15);
+  border: 1px dashed var(--primary-gold);
+}
+
+.hotspot:hover {
+  background-color: rgba(181, 137, 59, 0.1);
+  box-shadow: 0 0 15px rgba(181, 137, 59, 0.3);
+}
+
+/* Form inputs styling overlays */
+.form-input-overlay {
+  position: absolute;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: var(--text-dark);
+  padding: 8px 12px;
+  z-index: 10;
+}
+
+.form-input-overlay::placeholder {
+  color: #a09aa8;
+  opacity: 0; /* Let background image placeholder show through, or set opacity on focus */
+}
+
+.form-input-overlay:focus {
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 2px var(--primary-gold);
+  border-radius: 4px;
+}
+
+/* Custom modal styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(27, 11, 48, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background: var(--bg-cream);
+  border-radius: 16px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid rgba(181, 137, 59, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-dark);
+  transition: transform 0.2s;
+}
+
+.modal-close:hover {
+  transform: rotate(90deg);
+  color: var(--primary-gold);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Hide scrollbar for all browsers while keeping scroll functionality */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Hide scrollbar for all elements */
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Helper styles for interactive overlay modals */
+.info-modal-header {
+  padding: 30px 40px 20px;
+  border-bottom: 1px solid rgba(181, 137, 59, 0.2);
+  background: var(--dark-purple);
+  color: var(--text-light);
+}
+
+.info-modal-title {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  color: var(--primary-gold);
+}
+
+.info-modal-body {
+  padding: 40px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+/* Custom styles for R&D simulator */
+.simulator-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .simulator-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+.simulator-title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  color: var(--primary-gold);
+  margin-bottom: 15px;
+}
+
+.ingredient-card {
+  padding: 15px;
+  background: white;
+  border: 1px solid #e2dfd8;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ingredient-card.selected {
+  border-color: var(--primary-gold);
+  background: rgba(181, 137, 59, 0.05);
+  box-shadow: 0 0 10px rgba(181, 137, 59, 0.1);
+}
+
+.ingredient-card:hover {
+  transform: translateY(-2px);
+}
+
+.metric-bar-container {
+  background: #e2dfd8;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.metric-bar-fill {
+  height: 100%;
+  transition: width 0.4s ease-out;
+}
+
+/* Responsive navigation bar */
+.nav-link {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary-gold);
+}
+
+/* ─── Responsive Modal System ─── */
+.egc-modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  background: rgba(8, 18, 48, 0.82) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+  transition: all 0.3s ease;
+}
+
+.egc-modal-card {
+  background: white !important;
+  border-radius: 24px !important;
+  width: 100% !important;
+  max-height: 90vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  box-shadow: 0 48px 120px rgba(0, 0, 0, 0.35) !important;
+  transition: all 0.3s ease;
+}
+
+.egc-modal-header-img {
+  height: 160px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+}
+
+.egc-modal-header-content {
+  position: absolute !important;
+  bottom: 18px !important;
+  left: 24px !important;
+  right: 24px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-end !important;
+  width: calc(100% - 48px) !important;
+}
+
+.egc-modal-title {
+  font-family: Syne, var(--font-serif) !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: white !important;
+  margin: 0 !important;
+  line-height: 1.3 !important;
+}
+
+.egc-modal-body {
+  padding: 28px 32px 36px !important;
+  overflow-y: auto !important;
+  flex-grow: 1 !important;
+}
+
+.egc-modal-bullet-item {
+  display: flex !important;
+  gap: 12px !important;
+  align-items: flex-start !important;
+  padding: 14px 16px !important;
+  background: rgba(13, 42, 82, 0.02) !important;
+  border: 1px solid rgba(13, 42, 82, 0.05) !important;
+  border-radius: 10px !important;
+}
+
+.egc-modal-noimg-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 24px !important;
+}
+
+.egc-modal-noimg-title {
+  font-family: Syne, var(--font-serif) !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #0D2A52 !important;
+  margin: 0 !important;
+  line-height: 1.3 !important;
+}
+
+.egc-modal-noimg-icon {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 12px !important;
+  background: rgba(181, 137, 59, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+/* Product Expertise Component Full Catalog Modal */
+.pe-catalog-modal-card {
+  background: white !important;
+  border-radius: 24px !important;
+  max-width: 900px !important;
+  width: 100% !important;
+  max-height: 88vh !important;
+  overflow: auto !important;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.35) !important;
+}
+
+.pe-catalog-modal-body {
+  padding: 36px 40px !important;
+}
+
+/* Product Expertise Page Category Modal */
+.pe-category-modal-card {
+  max-width: 600px !important;
+  width: 100% !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  background: white !important;
+  border-radius: 24px !important;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.45) !important;
+  border: 1px solid rgba(212,175,55,0.3) !important;
+}
+
+.pe-category-modal-header {
+  position: relative !important;
+  height: 260px !important;
+  border-radius: 24px 24px 0 0 !important;
+  overflow: hidden !important;
+}
+
+.pe-category-modal-body {
+  padding: 24px 28px 32px !important;
+}
+
+/* Tablet & Mobile Overrides */
+@media (max-width: 768px) {
+  .pe-catalog-modal-body {
+    padding: 24px 20px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .egc-modal-overlay {
+    padding: 12px !important;
+  }
+  .egc-modal-card {
+    border-radius: 16px !important;
+    max-height: 85vh !important;
+  }
+  .egc-modal-header-img {
+    height: 120px !important;
+  }
+  .egc-modal-header-content {
+    bottom: 12px !important;
+    left: 16px !important;
+    right: 16px !important;
+    width: calc(100% - 32px) !important;
+  }
+  .egc-modal-title {
+    font-size: 16px !important;
+  }
+  .egc-modal-body {
+    padding: 18px 20px 20px !important;
+  }
+  .egc-modal-bullet-item {
+    padding: 10px 12px !important;
+    gap: 8px !important;
+  }
+  .egc-modal-noimg-header {
+    margin-bottom: 16px !important;
+  }
+  .egc-modal-noimg-title {
+    font-size: 16px !important;
+  }
+  .egc-modal-noimg-icon {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 9px !important;
+  }
+  .pe-catalog-modal-card {
+    border-radius: 16px !important;
+    max-height: 85vh !important;
+  }
+  .pe-catalog-modal-body {
+    padding: 20px 16px !important;
+  }
+  .pe-category-modal-card {
+    max-height: 85vh !important;
+    border-radius: 16px !important;
+  }
+  .pe-category-modal-header {
+    height: 150px !important;
+    border-radius: 16px 16px 0 0 !important;
+  }
+  .pe-category-modal-body {
+    padding: 16px 20px 20px !important;
+  }
+}
+
