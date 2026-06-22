@@ -344,6 +344,7 @@ export default function Footer() {
           BACK TO TOP BUTTON
       ══════════════════════════════════════════════════ */}
       <button
+        className="ft-back-to-top"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         style={{
           position: 'fixed', bottom: '32px', right: '32px', zIndex: 500,
@@ -394,6 +395,10 @@ export default function Footer() {
         }
         @media (max-width: 680px) {
           footer { padding-bottom: 70px; }
+          .ft-back-to-top {
+            bottom: calc(76px + env(safe-area-inset-bottom)) !important;
+            right: 16px !important;
+          }
         }
       `}} />
 

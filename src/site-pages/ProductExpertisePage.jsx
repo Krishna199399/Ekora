@@ -1043,7 +1043,7 @@ export default function ProductExpertisePage() {
   const [ctaRef,        ctaVisible]        = useReveal();
 
   return (
-    <div style={{ background: WHITE, overflowX: 'hidden', fontFamily: 'Outfit, sans-serif' }}>
+    <div style={{ background: WHITE, paddingTop: '80px', overflowX: 'hidden', fontFamily: 'Outfit, sans-serif' }}>
 
       {/* ══════════════════════════════════════════════════════════
           SECTION 1 — HERO (SPLIT-SCREEN)
@@ -1053,7 +1053,7 @@ export default function ProductExpertisePage() {
         ref={heroRef}
         style={{
           position: 'relative', background: NAVY,
-          minHeight: '100vh', display: 'flex', alignItems: 'center',
+          minHeight: 'calc(100vh - 80px)', display: 'flex', alignItems: 'center',
           overflow: 'hidden',
         }}
       >
