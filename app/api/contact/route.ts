@@ -342,6 +342,20 @@ function step(num: string, title: string, desc: string): string {
   </tr>`;
 }
 
+// ─── CORS Configuration & Response Helper ──────────────────
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+};
+
+function corsResponse(data: any, status = 200) {
+  return NextResponse.json(data, {
+    status,
+    headers: corsHeaders,
+  });
+}
+
 // ─── Main Route Handler ────────────────────────────────────
 export async function POST(req: NextRequest) {
   // Get client IP for rate limiting
@@ -350,9 +364,9 @@ export async function POST(req: NextRequest) {
 
   // Rate limit check
   if (isRateLimited(ip)) {
-    return NextResponse.json(
+    return corsResponse(
       { success: false, message: 'Too many submissions. Please wait 10 minutes and try again.' },
-      { status: 429 }
+      429
     );
   }
 
@@ -361,32 +375,32 @@ export async function POST(req: NextRequest) {
   try {
     body = await req.json();
   } catch {
-    return NextResponse.json(
+    return corsResponse(
       { success: false, message: 'Invalid request body.' },
-      { status: 400 }
+      400
     );
   }
 
   // Honeypot spam check
   if ((body as any).website) {
-    return NextResponse.json({ success: true, message: 'Submitted.' }); // Silent reject
+    return corsResponse({ success: true, message: 'Submitted.' }); // Silent reject
   }
 
   // Validate
   const { valid, errors } = validate(body);
   if (!valid) {
-    return NextResponse.json(
+    return corsResponse(
       { success: false, message: errors[0], errors },
-      { status: 422 }
+      422
     );
   }
 
   // Check SMTP config
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
     console.error('[EGC Contact API] SMTP credentials not configured in environment variables.');
-    return NextResponse.json(
+    return corsResponse(
       { success: false, message: 'Email service is not configured. Please contact us directly.' },
-      { status: 500 }
+      500
     );
   }
 
@@ -421,9 +435,8 @@ export async function POST(req: NextRequest) {
       }),
     ]);
 
-    return NextResponse.json(
-      { success: true, message: 'Your inquiry has been submitted successfully! Check your email for confirmation.' },
-      { status: 200 }
+    return corsResponse(
+      { success: true, message: 'Your inquiry has been submitted successfully! Check your email for confirmation.' }
     );
   } catch (error: unknown) {
     const errMsg = error instanceof Error ? error.message : 'Unknown error';
@@ -431,20 +444,28 @@ export async function POST(req: NextRequest) {
 
     // Provide a user-friendly error message
     if (errMsg.includes('ECONNREFUSED') || errMsg.includes('ETIMEDOUT')) {
-      return NextResponse.json(
+      return corsResponse(
         { success: false, message: 'Email service is temporarily unavailable. Please contact us directly at info@ekoraglobalconsulting.com' },
-        { status: 503 }
+        503
       );
     }
 
-    return NextResponse.json(
+    return corsResponse(
       { success: false, message: 'Failed to send email. Please try again or contact us directly.' },
-      { status: 500 }
+      500
     );
   }
 }
 
 // Block non-POST methods
 export async function GET() {
-  return NextResponse.json({ message: 'Method not allowed.' }, { status: 405 });
+  return corsResponse({ message: 'Method not allowed.' }, 405);
+}
+
+// Options preflight handler for CORS
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 204,
+    headers: corsHeaders,
+  });
 }

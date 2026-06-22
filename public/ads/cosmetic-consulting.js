@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // Production submission
-        fetch('/api/contact', {
+        fetch('https://ekoraglobalconsulting.com/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
