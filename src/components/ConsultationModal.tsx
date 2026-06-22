@@ -5,7 +5,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronDown, Check, Phone, Loader2, Lock, ShieldCheck, Clock, FileCheck } from 'lucide-react';
+import { X, ChevronDown, Check, Phone, Loader2 } from 'lucide-react';
 import { useConsultationModal } from '../context/ConsultationModalContext';
 
 // Zod validation schema
@@ -73,7 +73,7 @@ export default function ConsultationModal() {
 
   const selectedService = watch('service');
 
-  // Handle escape key to close modal
+  // Handle escape key to close modal & scroll locking
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -83,10 +83,12 @@ export default function ConsultationModal() {
     if (isOpen) {
       window.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden'; // Lock body scroll
+      document.documentElement.style.overflow = 'hidden'; // Lock html scroll as well
     }
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     };
   }, [isOpen, closeModal]);
 
@@ -375,7 +377,7 @@ export default function ConsultationModal() {
                         {...register('message')}
                         placeholder=" "
                         disabled={isSubmitting}
-                        rows={3}
+                        rows={2}
                       />
                       <label htmlFor="message" className="luxury-label">
                         Message / Project Requirements
@@ -435,25 +437,7 @@ export default function ConsultationModal() {
                     )}
                   </form>
 
-                  {/* Trust Indicators */}
-                  <div className="luxury-trust-grid">
-                    <div className="luxury-trust-item">
-                      <FileCheck className="w-4 h-4 text-gold flex-shrink-0" />
-                      <span>Free Initial Consultation</span>
-                    </div>
-                    <div className="luxury-trust-item">
-                      <ShieldCheck className="w-4 h-4 text-gold flex-shrink-0" />
-                      <span>Industry Expert Guidance</span>
-                    </div>
-                    <div className="luxury-trust-item">
-                      <Lock className="w-4 h-4 text-gold flex-shrink-0" />
-                      <span>Confidential Discussion</span>
-                    </div>
-                    <div className="luxury-trust-item">
-                      <Clock className="w-4 h-4 text-gold flex-shrink-0" />
-                      <span>Response Within 24 Hours</span>
-                    </div>
-                  </div>
+                  {/* Trust Indicators Removed */}
                 </motion.div>
               ) : (
                 <motion.div
@@ -531,6 +515,7 @@ export default function ConsultationModal() {
               backdrop-filter: blur(16px);
               -webkit-backdrop-filter: blur(16px);
               padding: 24px;
+              overscroll-behavior: contain;
             }
 
             /* Container card with radial velvet theme */
@@ -540,12 +525,13 @@ export default function ConsultationModal() {
               border: 1px solid rgba(181, 137, 59, 0.22);
               border-radius: 24px;
               width: 100%;
-              max-width: 640px;
-              overflow: hidden;
+              max-width: 560px;
+              max-height: 90vh;
+              overflow-y: auto;
               box-shadow: 
                 0 30px 70px rgba(0, 0, 0, 0.6),
                 inset 0 0 30px rgba(181, 137, 59, 0.05);
-              padding: 44px;
+              padding: 32px 36px;
               z-index: 10;
             }
 
@@ -601,17 +587,17 @@ export default function ConsultationModal() {
 
             /* Header Section */
             .luxury-modal-header {
-              margin-bottom: 28px;
+              margin-bottom: 18px;
             }
             .luxury-modal-title {
               font-family: 'Montserrat', sans-serif !important;
-              font-size: 28px;
+              font-size: 22px;
               font-weight: 800;
               letter-spacing: -0.5px;
               background: linear-gradient(135deg, #fff 40%, #e5d7bc 100%);
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
-              margin-bottom: 8px;
+              margin-bottom: 6px;
             }
             .luxury-modal-subtitle {
               font-size: 13.5px;
@@ -626,12 +612,12 @@ export default function ConsultationModal() {
             .luxury-modal-form {
               display: flex;
               flex-direction: column;
-              gap: 20px;
+              gap: 16px;
             }
             .luxury-form-grid {
               display: grid;
               grid-template-columns: 1fr 1fr;
-              gap: 20px;
+              gap: 16px;
             }
 
             /* Floating labels group */
@@ -660,7 +646,7 @@ export default function ConsultationModal() {
               outline: none;
               font-size: 14px;
               color: #ffffff;
-              padding: 24px 0 8px 0;
+              padding: 18px 0 6px 0;
               font-weight: 500;
               transition: all 0.2s ease;
             }
@@ -672,7 +658,7 @@ export default function ConsultationModal() {
             .luxury-label {
               position: absolute;
               left: 0;
-              top: 24px;
+              top: 18px;
               font-size: 14px;
               color: rgba(255, 255, 255, 0.4);
               font-weight: 500;
@@ -684,7 +670,7 @@ export default function ConsultationModal() {
             .luxury-input:focus ~ .luxury-label,
             .luxury-input:not(:placeholder-shown) ~ .luxury-label,
             .luxury-input.has-value ~ .luxury-label {
-              top: 4px;
+              top: 0px;
               font-size: 11px;
               color: #b5893b;
               font-weight: 600;
@@ -702,7 +688,7 @@ export default function ConsultationModal() {
               font-weight: 500;
               margin-top: 4px;
               position: absolute;
-              bottom: -18px;
+              bottom: -16px;
               left: 0;
             }
             
@@ -710,7 +696,7 @@ export default function ConsultationModal() {
             .luxury-success-icon {
               position: absolute;
               right: 4px;
-              bottom: 8px;
+              bottom: 6px;
               width: 14px;
               height: 14px;
               color: #25d366;
@@ -724,18 +710,18 @@ export default function ConsultationModal() {
               outline: none;
               font-size: 14px;
               color: #ffffff;
-              padding: 24px 0 8px 0;
+              padding: 18px 0 6px 0;
               font-weight: 500;
               resize: none;
               transition: all 0.2s ease;
             }
             .luxury-textarea ~ .luxury-label {
-              top: 24px;
+              top: 18px;
             }
             .luxury-textarea:focus ~ .luxury-label,
             .luxury-textarea:not(:placeholder-shown) ~ .luxury-label,
             .luxury-textarea.has-value ~ .luxury-label {
-              top: 4px;
+              top: 0px;
               font-size: 11px;
               color: #b5893b;
               font-weight: 600;
@@ -753,7 +739,7 @@ export default function ConsultationModal() {
               color: rgba(255, 255, 255, 0.85);
               font-size: 14px;
               font-weight: 500;
-              padding: 14px 16px;
+              padding: 11px 14px;
               text-align: left;
               cursor: pointer;
               transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -831,10 +817,10 @@ export default function ConsultationModal() {
               background: linear-gradient(135deg, #b5893b, #d4af37);
               border: none;
               color: #ffffff;
-              font-size: 14.5px;
+              font-size: 14px;
               font-weight: 700;
-              padding: 16px;
-              border-radius: 12px;
+              padding: 12px;
+              border-radius: 10px;
               cursor: pointer;
               box-shadow: 0 4px 20px rgba(181, 137, 59, 0.3);
               transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -850,7 +836,7 @@ export default function ConsultationModal() {
               transform: none;
               box-shadow: none;
             }
-
+ 
             .luxury-secondary-btn {
               flex: 2;
               display: flex;
@@ -860,10 +846,10 @@ export default function ConsultationModal() {
               background: rgba(255, 255, 255, 0.03);
               border: 1px solid rgba(255, 255, 255, 0.12);
               color: #e5d7bc;
-              font-size: 14px;
+              font-size: 13.5px;
               font-weight: 650;
-              padding: 16px;
-              border-radius: 12px;
+              padding: 12px;
+              border-radius: 10px;
               cursor: pointer;
               text-decoration: none;
               transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -874,24 +860,7 @@ export default function ConsultationModal() {
               color: #ffffff;
             }
 
-            /* Trust Indicators */
-            .luxury-trust-grid {
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              gap: 12px 24px;
-              margin-top: 24px;
-              border-top: 1px solid rgba(255, 255, 255, 0.08);
-              padding-top: 20px;
-            }
-            .luxury-trust-item {
-              display: flex;
-              align-items: center;
-              gap: 10px;
-              font-size: 11.5px;
-              color: rgba(255, 255, 255, 0.5);
-              font-weight: 550;
-              letter-spacing: 0.2px;
-            }
+            /* Trust Indicators Removed */
 
             /* Success State styling */
             .luxury-success-container {
@@ -968,44 +937,44 @@ export default function ConsultationModal() {
             /* Responsive Overrides */
             @media (max-width: 768px) {
               .luxury-modal-overlay {
-                padding: 0;
+                padding: 16px;
+                align-items: flex-start;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
               }
               .luxury-modal-card {
-                max-width: 100%;
-                height: 100%;
-                max-height: 100vh;
-                border: none;
-                border-radius: 0;
-                padding: 60px 24px 40px 24px;
+                max-width: 480px;
+                width: 100%;
+                margin: 20px auto;
+                height: auto;
+                max-height: none;
+                border: 1px solid rgba(181, 137, 59, 0.22);
+                border-radius: 20px;
+                padding: 30px 20px 24px 20px;
                 display: flex;
                 flex-direction: column;
-                overflow-y: auto;
+                overflow: visible;
               }
               .luxury-modal-inner {
-                flex-grow: 1;
                 display: flex;
                 flex-direction: column;
               }
               .luxury-modal-form {
-                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
               }
               .luxury-form-grid {
                 grid-template-columns: 1fr;
-                gap: 16px;
+                gap: 14px;
               }
               .luxury-cta-container {
-                margin-top: auto;
+                margin-top: 10px;
                 flex-direction: column;
-                gap: 12px;
+                gap: 10px;
               }
               .luxury-submit-btn, .luxury-secondary-btn {
                 width: 100%;
-                padding: 15px;
-              }
-              .luxury-trust-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
-                margin-top: 30px;
+                padding: 12px;
               }
             }
           `}} />

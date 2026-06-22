@@ -624,7 +624,7 @@ function CategoryModal({ cat, onClose }) {
             ))}
           </div>
           <Link
-            href="/contact"
+            href="/contact/"
             onClick={onClose}
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',

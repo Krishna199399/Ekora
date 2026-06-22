@@ -78,7 +78,7 @@ export default function Navbar() {
   const handleNavClick = (target) => {
     setMobileMenuOpen(false);
     setMegaOpen(false);
-    const routes = { home: '/', about: '/about', capabilities: '/services', expertise: '/product-expertise', rdi: '/rd-innovation', contact: '/contact' };
+    const routes = { home: '/', about: '/about/', capabilities: '/services/', expertise: '/product-expertise/', rdi: '/rd-innovation/', contact: '/contact/' };
     if (routes[target]) router.push(routes[target]);
   };
 
@@ -254,7 +254,7 @@ export default function Navbar() {
               <span style={{ fontSize: '10px', fontWeight: 700, color: '#b5893b', letterSpacing: '2.5px', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>Our Services</span>
               <span style={{ fontFamily: 'Syne, var(--font-serif)', fontSize: '18px', fontWeight: 700, color: '#0D2A52' }}>Cosmetic Consulting Capabilities</span>
             </div>
-            <Link href="/services" className="nb-view-all-btn" onClick={() => setMegaOpen(false)} style={{
+             <Link href="/services/" className="nb-view-all-btn" onClick={() => setMegaOpen(false)} style={{
               display: 'inline-flex', alignItems: 'center', gap: '7px',
               padding: '9px 20px', background: '#0D2A52', color: 'white',
               textDecoration: 'none', borderRadius: '8px',
@@ -286,7 +286,7 @@ export default function Navbar() {
                     return (
                       <li key={slug}>
                         <Link
-                          href={`/services/${slug}`}
+                          href={`/services/${slug}/`}
                           onClick={() => setMegaOpen(false)}
                           className="nb-mega-item"
                           style={{ '--col-color': col.color, background: isActive ? `${col.color}10` : 'transparent', fontWeight: isActive ? 700 : 500 }}
@@ -346,7 +346,7 @@ export default function Navbar() {
             </button>
             {mobileServicesOpen && (
               <div style={{ paddingLeft: '14px', paddingBottom: '8px' }}>
-                <Link href="/services" className="nb-mobile-overview" onClick={() => setMobileMenuOpen(false)}>→ View All Services Overview</Link>
+                <Link href="/services/" className="nb-mobile-overview" onClick={() => setMobileMenuOpen(false)}>→ View All Services Overview</Link>
                 {MEGA_COLUMNS.map((col) => (
                   <div key={col.label} style={{ marginBottom: '14px' }}>
                     <span style={{ display: 'block', fontSize: '9.5px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.5px', color: col.color, padding: '8px 10px 4px', fontFamily: 'var(--font-sans)' }}>{col.label}</span>
@@ -354,7 +354,7 @@ export default function Navbar() {
                       const svc = SERVICE_MAP[slug];
                       if (!svc) return null;
                       return (
-                        <Link key={slug} href={`/services/${slug}`} className="nb-mobile-service-link" onClick={() => setMobileMenuOpen(false)}>{svc.name}</Link>
+                        <Link key={slug} href={`/services/${slug}/`} className="nb-mobile-service-link" onClick={() => setMobileMenuOpen(false)}>{svc.name}</Link>
                       );
                     })}
                   </div>

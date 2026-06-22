@@ -865,7 +865,7 @@ export default function RDInnovationPage() {
             {/* Left column container */}
             <div>
               {/* Sticky nav */}
-              <div style={{ position: 'sticky', top: '100px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div className="rdi-hub-tabs-container" style={{ position: 'sticky', top: '100px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {INNOVATION_CATEGORIES.map((cat) => {
                   const Icon = cat.icon;
                   const isAct = activeCategory === cat.id;
@@ -873,6 +873,7 @@ export default function RDInnovationPage() {
                     <button
                       key={cat.id}
                       onClick={() => handleTabSwitch(cat.id)}
+                      className={`rdi-hub-tab-btn ${isAct ? 'active-btn' : ''}`}
                       style={{
                         display: 'flex', alignItems: 'center', gap: '16px',
                         padding: '18px 20px', border: 'none', borderRadius: '14px',
@@ -881,6 +882,7 @@ export default function RDInnovationPage() {
                         boxShadow: isAct ? '0 8px 28px rgba(27,11,48,0.08)' : 'none',
                         cursor: 'pointer', textAlign: 'left',
                         transition: 'all 0.35s cubic-bezier(0.4,0,0.2,1)',
+                        '--tab-color': cat.color
                       }}
                       onMouseEnter={e => { if (!isAct) e.currentTarget.style.background = 'rgba(255,255,255,0.6)'; }}
                       onMouseLeave={e => { if (!isAct) e.currentTarget.style.background = 'transparent'; }}
@@ -889,17 +891,20 @@ export default function RDInnovationPage() {
                         <Icon size={18} />
                       </div>
                       <div style={{ flex: 1 }}>
-                        <div style={{ fontSize: '13.5px', fontWeight: 700, color: isAct ? DEEP : MUTED, lineHeight: 1.3, transition: 'color 0.3s' }}>{cat.title}</div>
-                        <div style={{ fontSize: '11px', color: isAct ? cat.color : 'transparent', fontWeight: 600, letterSpacing: '0.5px', marginTop: '3px', transition: 'color 0.3s' }}>Active</div>
+                        <div style={{ fontSize: '13.5px', fontWeight: 700, color: isAct ? DEEP : MUTED, lineHeight: 1.3, transition: 'color 0.3s' }}>
+                          <span className="rdi-tab-title-desktop">{cat.title}</span>
+                          <span className="rdi-tab-title-mobile">{cat.short || cat.title}</span>
+                        </div>
+                        <div className="rdi-tab-active-label" style={{ fontSize: '11px', color: isAct ? cat.color : 'transparent', fontWeight: 600, letterSpacing: '0.5px', marginTop: '3px', transition: 'color 0.3s' }}>Active</div>
                       </div>
-                      {isAct && <ArrowRight size={14} color={cat.color} />}
+                      {isAct && <ArrowRight size={14} color={cat.color} className="rdi-tab-arrow" />}
                     </button>
                   );
                 })}
 
                 {/* Category summary card */}
                 {activeCat && (
-                  <div style={{ marginTop: '20px', background: `linear-gradient(135deg, ${activeCat.color}10, ${activeCat.color}05)`, border: `1px solid ${activeCat.color}25`, borderRadius: '16px', padding: '20px' }}>
+                  <div className="rdi-hub-summary-card" style={{ marginTop: '20px', background: `linear-gradient(135deg, ${activeCat.color}10, ${activeCat.color}05)`, border: `1px solid ${activeCat.color}25`, borderRadius: '16px', padding: '20px' }}>
                     <div style={{ fontSize: '11px', fontWeight: 700, color: activeCat.color, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '8px' }}>Active Pillar</div>
                     <div style={{ fontFamily: 'Syne, serif', fontSize: '15px', fontWeight: 700, color: DEEP, marginBottom: '8px' }}>{activeCat.title}</div>
                     <div style={{ fontSize: '12px', color: MUTED, lineHeight: 1.5 }}>{activeCaps.length} innovation area{activeCaps.length !== 1 ? 's' : ''} in this category</div>
@@ -1309,7 +1314,7 @@ export default function RDInnovationPage() {
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = `0 10px 32px ${GOLD}50`; }}>
               Discuss Your Innovation Opportunity <ArrowRight size={17} />
             </button>
-            <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '16px 30px', background: 'rgba(255,255,255,0.08)', color: WHITE, border: '1px solid rgba(255,255,255,0.2)', borderRadius: '10px', fontWeight: 600, fontSize: '15px', textDecoration: 'none', backdropFilter: 'blur(8px)', transition: 'all 0.3s ease' }}
+            <Link href="/contact/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '16px 30px', background: 'rgba(255,255,255,0.08)', color: WHITE, border: '1px solid rgba(255,255,255,0.2)', borderRadius: '10px', fontWeight: 600, fontSize: '15px', textDecoration: 'none', backdropFilter: 'blur(8px)', transition: 'all 0.3s ease' }}
               onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.14)'; }}
               onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; }}>
               <Phone size={16} /> Contact Our Experts
@@ -1402,9 +1407,59 @@ export default function RDInnovationPage() {
           transform: scaleX(1) !important;
         }
 
+        .rdi-tab-title-desktop { display: inline; }
+        .rdi-tab-title-mobile { display: none; }
+
         /* Responsive */
         @media (max-width: 1024px) {
           .rdi-hub-layout { grid-template-columns: 1fr !important; }
+          .rdi-hub-layout > div { min-width: 0 !important; }
+          .rdi-hub-tabs-container {
+            position: relative !important;
+            top: 0 !important;
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            padding: 8px 4px !important;
+            margin: 0 -40px !important;
+            padding-left: 40px !important;
+            padding-right: 40px !important;
+            gap: 12px !important;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+          }
+          .rdi-hub-tabs-container::-webkit-scrollbar {
+            display: none;
+          }
+          .rdi-hub-tab-btn {
+            flex: 0 0 auto !important;
+            white-space: nowrap !important;
+            padding: 12px 18px !important;
+            border-left: none !important;
+            border-bottom: 4px solid transparent !important;
+          }
+          .rdi-hub-tab-btn.active-btn {
+            border-bottom-color: var(--tab-color) !important;
+            border-bottom-left-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+          }
+          .rdi-tab-arrow {
+            display: none !important;
+          }
+          .rdi-hub-summary-card {
+            display: none !important;
+          }
+          .rdi-tab-title-desktop {
+            display: none !important;
+          }
+          .rdi-tab-title-mobile {
+            display: inline !important;
+          }
+          .rdi-tab-active-label {
+            display: none !important;
+          }
+
           .rdi-hero-collage { display: none !important; }
           .rdi-hero-grid { grid-template-columns: 1fr !important; }
           .rdi-why-grid { grid-template-columns: repeat(2,1fr) !important; }
@@ -1421,6 +1476,11 @@ export default function RDInnovationPage() {
           .rdi-comm-grid { grid-template-columns: repeat(2,1fr) !important; }
         }
         @media (max-width: 680px) {
+          .rdi-hub-tabs-container {
+            margin: 0 -16px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
           .rdi-hero-grid { grid-template-columns: 1fr !important; }
           .rdi-hero-collage { display: none !important; }
           .rdi-sandbox-grid { grid-template-columns: 1fr !important; }

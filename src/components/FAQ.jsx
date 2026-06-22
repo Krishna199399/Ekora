@@ -115,7 +115,7 @@ export default function FAQ() {
               Our team is here to help. Get in touch with our cosmetic industrial consultants and receive personalized answers to your specific needs.
             </p>
             <Link
-              href="/contact"
+              href="/contact/"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 32px', background: 'linear-gradient(135deg, #B5893B, #D4AF37)', color: 'white', border: 'none', borderRadius: '10px', fontWeight: 700, fontSize: '14px', cursor: 'pointer', transition: 'all 0.3s ease', boxShadow: '0 6px 20px rgba(181,137,59,0.4)', fontFamily: 'var(--font-sans)', position: 'relative', zIndex: 1, textDecoration: 'none' }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 28px rgba(181,137,59,0.55)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(181,137,59,0.4)'; }}>

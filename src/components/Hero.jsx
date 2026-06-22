@@ -197,7 +197,7 @@ export default function Hero() {
             style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}
           >
             <button
-              onClick={() => router.push('/services')}
+              onClick={() => router.push('/services/')}
               className="hero-btn-primary"
               style={{
                 display: 'inline-flex',
@@ -218,7 +218,7 @@ export default function Hero() {
             </button>
             
             <button
-              onClick={() => router.push('/rd-innovation')}
+              onClick={() => router.push('/rd-innovation/')}
               className="hero-btn-secondary"
               style={{
                 display: 'inline-flex',

@@ -501,7 +501,7 @@ export default function ServicesPage() {
             {/* Left column container */}
             <div>
               {/* Sticky nav */}
-              <div style={{ position: 'sticky', top: '100px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div className="sp-cap-tabs-container" style={{ position: 'sticky', top: '100px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {SERVICE_CATEGORIES.map((cat) => {
                   const Icon = cat.icon;
                   const isAct = activeCategory === cat.id;
@@ -509,6 +509,7 @@ export default function ServicesPage() {
                     <button
                       key={cat.id}
                       onClick={() => handleTabSwitch(cat.id)}
+                      className={`sp-cap-tab-btn ${isAct ? 'active-btn' : ''}`}
                       style={{
                         display: 'flex', alignItems: 'center', gap: '16px',
                         padding: '18px 20px', border: 'none', borderRadius: '14px',
@@ -517,6 +518,7 @@ export default function ServicesPage() {
                         boxShadow: isAct ? '0 8px 28px rgba(27,11,48,0.08)' : 'none',
                         cursor: 'pointer', textAlign: 'left',
                         transition: 'all 0.35s cubic-bezier(0.4,0,0.2,1)',
+                        '--tab-color': cat.color
                       }}
                       onMouseEnter={e => { if (!isAct) e.currentTarget.style.background = 'rgba(255,255,255,0.6)'; }}
                       onMouseLeave={e => { if (!isAct) e.currentTarget.style.background = 'transparent'; }}
@@ -525,17 +527,20 @@ export default function ServicesPage() {
                         <Icon size={18} />
                       </div>
                       <div style={{ flex: 1 }}>
-                        <div style={{ fontSize: '13.5px', fontWeight: 700, color: isAct ? DEEP : MUTED, lineHeight: 1.3, transition: 'color 0.3s' }}>{cat.title}</div>
-                        <div style={{ fontSize: '11px', color: isAct ? cat.color : 'transparent', fontWeight: 600, letterSpacing: '0.5px', marginTop: '3px', transition: 'color 0.3s' }}>Active</div>
+                        <div style={{ fontSize: '13.5px', fontWeight: 700, color: isAct ? DEEP : MUTED, lineHeight: 1.3, transition: 'color 0.3s' }}>
+                          <span className="sp-tab-title-desktop">{cat.title}</span>
+                          <span className="sp-tab-title-mobile">{cat.short || cat.title}</span>
+                        </div>
+                        <div className="sp-tab-active-label" style={{ fontSize: '11px', color: isAct ? cat.color : 'transparent', fontWeight: 600, letterSpacing: '0.5px', marginTop: '3px', transition: 'color 0.3s' }}>Active</div>
                       </div>
-                      {isAct && <ArrowRight size={14} color={cat.color} />}
+                      {isAct && <ArrowRight size={14} color={cat.color} className="sp-tab-arrow" />}
                     </button>
                   );
                 })}
 
                 {/* Category summary card */}
                 {activeCat && (
-                  <div style={{ marginTop: '20px', background: `linear-gradient(135deg, ${activeCat.color}10, ${activeCat.color}05)`, border: `1px solid ${activeCat.color}25`, borderRadius: '16px', padding: '20px' }}>
+                  <div className="sp-cap-summary-card" style={{ marginTop: '20px', background: `linear-gradient(135deg, ${activeCat.color}10, ${activeCat.color}05)`, border: `1px solid ${activeCat.color}25`, borderRadius: '16px', padding: '20px' }}>
                     <div style={{ fontSize: '11px', fontWeight: 700, color: activeCat.color, letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '8px' }}>Active Pillar</div>
                     <div style={{ fontFamily: 'Syne, serif', fontSize: '15px', fontWeight: 700, color: DEEP, marginBottom: '8px' }}>{activeCat.title}</div>
                     <div style={{ fontSize: '12px', color: MUTED, lineHeight: 1.5 }}>{activeCaps.length} service{activeCaps.length !== 1 ? 's' : ''} in this category</div>
@@ -564,7 +569,7 @@ export default function ServicesPage() {
                               <h3 style={{ fontFamily: 'Syne, serif', fontSize: 'clamp(17px, 2vw, 22px)', fontWeight: 700, color: DEEP, margin: 0, lineHeight: 1.25 }}>{cap.title}</h3>
                             </div>
                           </div>
-                          <Link href={`/services/${cap.slug}`} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 700, color: catColor, textDecoration: 'none', letterSpacing: '0.5px', whiteSpace: 'nowrap', background: `${catColor}10`, padding: '8px 14px', borderRadius: '8px', border: `1px solid ${catColor}30`, transition: 'all 0.2s', flexShrink: 0 }}>
+                          <Link href={`/services/${cap.slug}/`} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 700, color: catColor, textDecoration: 'none', letterSpacing: '0.5px', whiteSpace: 'nowrap', background: `${catColor}10`, padding: '8px 14px', borderRadius: '8px', border: `1px solid ${catColor}30`, transition: 'all 0.2s', flexShrink: 0 }}>
                             Details <ArrowRight size={12} />
                           </Link>
                         </div>
@@ -596,7 +601,7 @@ export default function ServicesPage() {
                             onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}>
                             Get Consultation <ArrowRight size={14} />
                           </button>
-                          <Link href={`/services/${cap.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 22px', background: 'transparent', color: catColor, border: `1px solid ${catColor}40`, borderRadius: '8px', fontWeight: 600, fontSize: '13px', textDecoration: 'none', transition: 'all 0.3s ease' }}
+                          <Link href={`/services/${cap.slug}/`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 22px', background: 'transparent', color: catColor, border: `1px solid ${catColor}40`, borderRadius: '8px', fontWeight: 600, fontSize: '13px', textDecoration: 'none', transition: 'all 0.3s ease' }}
                             onMouseEnter={e => { e.currentTarget.style.background = `${catColor}08`; }}
                             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}>
                             Learn More <ArrowRight size={13} />
@@ -974,7 +979,7 @@ export default function ServicesPage() {
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = `0 10px 32px ${GOLD}50`; }}>
               Schedule Consultation <ArrowRight size={17} />
             </button>
-            <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '16px 30px', background: 'rgba(255,255,255,0.08)', color: WHITE, border: '1px solid rgba(255,255,255,0.2)', borderRadius: '10px', fontWeight: 600, fontSize: '15px', textDecoration: 'none', backdropFilter: 'blur(8px)', transition: 'all 0.3s ease' }}
+            <Link href="/contact/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '16px 30px', background: 'rgba(255,255,255,0.08)', color: WHITE, border: '1px solid rgba(255,255,255,0.2)', borderRadius: '10px', fontWeight: 600, fontSize: '15px', textDecoration: 'none', backdropFilter: 'blur(8px)', transition: 'all 0.3s ease' }}
               onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.14)'; }}
               onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; }}>
               <Phone size={16} /> Contact Our Experts
@@ -1038,9 +1043,59 @@ export default function ServicesPage() {
           transform: scaleX(1) !important;
         }
 
+        .sp-tab-title-desktop { display: inline; }
+        .sp-tab-title-mobile { display: none; }
+
         /* Responsive */
         @media (max-width: 1024px) {
           .sp-cap-layout { grid-template-columns: 1fr !important; }
+          .sp-cap-layout > div { min-width: 0 !important; }
+          .sp-cap-tabs-container {
+            position: relative !important;
+            top: 0 !important;
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            padding: 8px 4px !important;
+            margin: 0 -40px !important;
+            padding-left: 40px !important;
+            padding-right: 40px !important;
+            gap: 12px !important;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+          }
+          .sp-cap-tabs-container::-webkit-scrollbar {
+            display: none;
+          }
+          .sp-cap-tab-btn {
+            flex: 0 0 auto !important;
+            white-space: nowrap !important;
+            padding: 12px 18px !important;
+            border-left: none !important;
+            border-bottom: 4px solid transparent !important;
+          }
+          .sp-cap-tab-btn.active-btn {
+            border-bottom-color: var(--tab-color) !important;
+            border-bottom-left-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+          }
+          .sp-tab-arrow {
+            display: none !important;
+          }
+          .sp-cap-summary-card {
+            display: none !important;
+          }
+          .sp-tab-title-desktop {
+            display: none !important;
+          }
+          .sp-tab-title-mobile {
+            display: inline !important;
+          }
+          .sp-tab-active-label {
+            display: none !important;
+          }
+
           .sp-global-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .sp-hero-collage { display: none !important; }
           .sp-hero-grid-resp { grid-template-columns: 1fr !important; }
@@ -1055,6 +1110,11 @@ export default function ServicesPage() {
           .sp-timeline-line { display: none !important; }
         }
         @media (max-width: 680px) {
+          .sp-cap-tabs-container {
+            margin: 0 -16px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
           .sp-workflow-grid-resp { grid-template-columns: 1fr !important; }
           .sp-timeline-grid { grid-template-columns: 1fr !important; }
           .sp-stats-grid { grid-template-columns: repeat(2,1fr) !important; }

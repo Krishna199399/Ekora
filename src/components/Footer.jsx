@@ -31,29 +31,29 @@ function Reveal({ children, delay = 0, dir = 'up', style = {} }) {
 /* ─── Data ─────────────────────────────────────────────── */
 
 const SERVICE_LINKS = [
-  { label: 'R&D & Product Formulation',             href: '/services/cosmetic-research-product-formulation' },
-  { label: 'Stability Testing',                     href: '/services/cosmetic-stability-testing-shelf-life-validation' },
-  { label: 'Plant Setup & Factory Planning',        href: '/services/plant-setup-factory-planning' },
-  { label: 'Turnkey Project Solutions',             href: '/services/turnkey-cosmetic-project-solutions' },
-  { label: 'Manufacturing Consulting',              href: '/services/cosmetic-manufacturing-consulting' },
-  { label: 'Regulatory Compliance',                 href: '/services/regulatory-compliance-support' },
-  { label: 'Private Label Manufacturing',           href: '/services/private-label-contract-manufacturing' },
-  { label: 'Branding & Go-to-Market',              href: '/services/branding-go-to-market-consulting' },
+  { label: 'R&D & Product Formulation',             href: '/services/cosmetic-research-product-formulation/' },
+  { label: 'Stability Testing',                     href: '/services/cosmetic-stability-testing-shelf-life-validation/' },
+  { label: 'Plant Setup & Factory Planning',        href: '/services/plant-setup-factory-planning/' },
+  { label: 'Turnkey Project Solutions',             href: '/services/turnkey-cosmetic-project-solutions/' },
+  { label: 'Manufacturing Consulting',              href: '/services/cosmetic-manufacturing-consulting/' },
+  { label: 'Regulatory Compliance',                 href: '/services/regulatory-compliance-support/' },
+  { label: 'Private Label Manufacturing',           href: '/services/private-label-contract-manufacturing/' },
+  { label: 'Branding & Go-to-Market',              href: '/services/branding-go-to-market-consulting/' },
 ];
 
 const COMPANY_LINKS = [
-  { label: 'About Us',          href: '/about' },
-  { label: 'Our Vision',        href: '/about' },
-  { label: 'Leadership',        href: '/about' },
-  { label: 'Core Values',       href: '/about' },
-  { label: 'Global Network',    href: '/about' },
+  { label: 'About Us',          href: '/about/' },
+  { label: 'Our Vision',        href: '/about/' },
+  { label: 'Leadership',        href: '/about/' },
+  { label: 'Core Values',       href: '/about/' },
+  { label: 'Global Network',    href: '/about/' },
 ];
 
 const EXPLORE_LINKS = [
-  { label: 'Product Expertise', href: '/product-expertise' },
-  { label: 'Services Overview', href: '/services' },
-  { label: 'Contact Us',        href: '/contact' },
-  { label: 'Get Consultation',  href: '/contact' },
+  { label: 'Product Expertise', href: '/product-expertise/' },
+  { label: 'Services Overview', href: '/services/' },
+  { label: 'Contact Us',        href: '/contact/' },
+  { label: 'Get Consultation',  href: '/contact/' },
 ];
 
 const SOCIALS = [
@@ -140,7 +140,7 @@ export default function Footer() {
                     onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = `0 8px 28px ${GOLD}40`; }}>
                     Get Free Consultation <ArrowRight size={15} />
                   </button>
-                  <Link href="/services" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px 28px', background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.75)', textDecoration: 'none', borderRadius: '10px', fontWeight: 600, fontSize: '14px', border: '1px solid rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)', transition: 'all 0.3s ease' }}
+                  <Link href="/services/" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px 28px', background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.75)', textDecoration: 'none', borderRadius: '10px', fontWeight: 600, fontSize: '14px', border: '1px solid rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)', transition: 'all 0.3s ease' }}
                     onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.11)'}
                     onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}>
                     Explore Services
@@ -247,7 +247,7 @@ export default function Footer() {
                     <li key={i}><FLink href={s.href}>{s.label}</FLink></li>
                   ))}
                   <li style={{ marginTop: '10px' }}>
-                    <Link href="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: 700, color: GOLD, textDecoration: 'none', padding: '7px 14px', borderRadius: '7px', border: `1px solid ${GOLD}30`, background: `${GOLD}0a`, transition: 'all 0.25s ease' }}
+                    <Link href="/services/" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: 700, color: GOLD, textDecoration: 'none', padding: '7px 14px', borderRadius: '7px', border: `1px solid ${GOLD}30`, background: `${GOLD}0a`, transition: 'all 0.25s ease' }}
                       onMouseEnter={e => { e.currentTarget.style.background = `${GOLD}18`; e.currentTarget.style.transform = 'translateX(3px)'; }}
                       onMouseLeave={e => { e.currentTarget.style.background = `${GOLD}0a`; e.currentTarget.style.transform = 'translateX(0)'; }}>
                       All Services <ArrowRight size={11} />

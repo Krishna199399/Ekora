@@ -185,7 +185,7 @@ export default function ResearchInnovation() {
             {/* Simulator CTA Button */}
             <motion.div variants={itemVariants} style={{ marginTop: '6px' }}>
               <Link
-                href="/rd-innovation"
+                href="/rd-innovation/"
                 className="rd-cta-btn"
                 style={{ 
                   display: 'inline-flex', 

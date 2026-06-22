@@ -85,88 +85,79 @@ function getEduIcon(title) {
 }
 
 /* ─── Image Registry (lazy — keyed by string token) ─────────── */
-const IMAGE_REGISTRY = {};
-let registryInitialized = false;
+const IMAGE_REGISTRY = {
+  'formulation_bespoke':    '/formulation_bespoke.png',
+  'formulation_ingredient': '/formulation_ingredient.png',
+  'formulation_prototype':  '/formulation_prototype.png',
+  'formulation_commercial': '/formulation_commercial.png',
+  'fac_cosmetic':           '/fac_cosmetic.png',
+  'fac_industrial':         '/fac_industrial.png',
+  'fac_turnkey':            '/fac_turnkey.png',
+  'fac_boutique':           '/fac_boutique.png',
+  'rd_scientist':           '/rd_scientist.png',
+  'rd_shelves':             '/rd_shelves.png',
+  'stability_accelerated':  '/stability_accelerated_study.png',
+  'stability_container':    '/stability_container_compatibility.png',
+  'stability_realtime':     '/stability_realtime_shelf.jpg',
+  'stability_transport':    '/stability_transport_sensory.jpg',
+  'mfg_workflow':           '/mfg_workflow.png',
+  'mfg_gmp':                '/mfg_gmp.png',
+  'mfg_sop':                '/mfg_sop.png',
+  'mfg_equipment':          '/mfg_equipment.png',
+  'plant_layout':           '/plant_layout.png',
+  'plant_utility':          '/plant_utility.png',
+  'plant_equipment_install':'/plant_equipment_install.png',
+  'plant_commissioning':    '/plant_commissioning.png',
+  'turnkey_project':        '/turnkey_project.png',
+  'turnkey_construction':   '/turnkey_construction.png',
+  'turnkey_handover':       '/turnkey_handover.png',
+  'turnkey_training':       '/turnkey_training.png',
+  'pl_formulation':         '/pl_formulation.png',
+  'pl_filling':             '/pl_filling.png',
+  'pl_labeling':            '/pl_labeling.png',
+  'pl_quality':             '/pl_quality.png',
+  'reg_dossier':            '/reg_dossier.png',
+  'reg_safety':             '/reg_safety.png',
+  'reg_labeling':           '/reg_labeling.png',
+  'reg_audit':              '/reg_audit.png',
+  'dpr_report':             '/dpr_report.png',
+  'dpr_market':             '/dpr_market.png',
+  'dpr_finance':            '/dpr_finance.png',
+  'dpr_strategy':           '/dpr_strategy.png',
+  'recruit_interview':      '/recruit_interview.png',
+  'recruit_assessment':     '/recruit_assessment.png',
+  'recruit_onboarding':     '/recruit_onboarding.png',
+  'recruit_team':           '/recruit_team.png',
+  'pkg_design':             '/pkg_design.png',
+  'pkg_sourcing':           '/pkg_sourcing.png',
+  'pkg_testing':            '/pkg_testing.png',
+  'pkg_sustainability':     '/pkg_sustainability.png',
+  'ing_botanical':          '/ing_botanical.png',
+  'ing_active':             '/ing_active.png',
+  'ing_supplier':           '/ing_supplier.png',
+  'ing_docs':               '/ing_docs.png',
+  'brand_identity':         '/brand_identity.png',
+  'brand_strategy':         '/brand_strategy.png',
+  'brand_digital':          '/brand_digital.png',
+  'brand_retail':           '/brand_retail.png',
+  'scaleup_pilot':          '/scaleup_pilot.png',
+  'scaleup_process':        '/scaleup_process.png',
+  'scaleup_validation':     '/scaleup_validation.png',
+  'scaleup_commercial':     '/scaleup_commercial.png',
+  'export_cfs':             '/export_cfs.png',
+  'export_sds':             '/export_sds.png',
+  'export_multilabel':      '/export_multilabel.png',
+  'export_market':          '/export_market.png',
+  'rd_ai':                  '/rd_ai.png',
+  'rd_highthroughput':      '/rd_highthroughput.png',
+  'rd_lean':                '/rd_lean.png',
+  'rd_digital':             '/rd_digital.png',
+  'branding':               '/Branding & Go-To-Market Consulting Services.png',
+  'cat_luxury':             '/cat_luxury.png',
+};
 
 async function loadImages() {
-  if (registryInitialized) return;
-  registryInitialized = true;
-  const mods = {
-    'formulation_bespoke':    () => import('../../assets/formulation_bespoke.png'),
-    'formulation_ingredient': () => import('../../assets/formulation_ingredient.png'),
-    'formulation_prototype':  () => import('../../assets/formulation_prototype.png'),
-    'formulation_commercial': () => import('../../assets/formulation_commercial.png'),
-    'fac_cosmetic':           () => import('../../assets/fac_cosmetic.png'),
-    'fac_industrial':         () => import('../../assets/fac_industrial.png'),
-    'fac_turnkey':            () => import('../../assets/fac_turnkey.png'),
-    'fac_boutique':           () => import('../../assets/fac_boutique.png'),
-    'rd_scientist':           () => import('../../assets/rd_scientist.png'),
-    'rd_shelves':             () => import('../../assets/rd_shelves.png'),
-    'stability_accelerated':  () => import('../../assets/stability_accelerated_study.png'),
-    'stability_container':    () => import('../../assets/stability_container_compatibility.png'),
-    'stability_realtime':     () => import('../../assets/stability_realtime_shelf.jpg'),
-    'stability_transport':    () => import('../../assets/stability_transport_sensory.jpg'),
-    'mfg_workflow':           () => import('../../assets/mfg_workflow.png'),
-    'mfg_gmp':                () => import('../../assets/mfg_gmp.png'),
-    'mfg_sop':                () => import('../../assets/mfg_sop.png'),
-    'mfg_equipment':          () => import('../../assets/mfg_equipment.png'),
-    'plant_layout':           () => import('../../assets/plant_layout.png'),
-    'plant_utility':          () => import('../../assets/plant_utility.png'),
-    'plant_equipment_install':() => import('../../assets/plant_equipment_install.png'),
-    'plant_commissioning':    () => import('../../assets/plant_commissioning.png'),
-    'turnkey_project':        () => import('../../assets/turnkey_project.png'),
-    'turnkey_construction':   () => import('../../assets/turnkey_construction.png'),
-    'turnkey_handover':       () => import('../../assets/turnkey_handover.png'),
-    'turnkey_training':       () => import('../../assets/turnkey_training.png'),
-    'pl_formulation':         () => import('../../assets/pl_formulation.png'),
-    'pl_filling':             () => import('../../assets/pl_filling.png'),
-    'pl_labeling':            () => import('../../assets/pl_labeling.png'),
-    'pl_quality':             () => import('../../assets/pl_quality.png'),
-    'reg_dossier':            () => import('../../assets/reg_dossier.png'),
-    'reg_safety':             () => import('../../assets/reg_safety.png'),
-    'reg_labeling':           () => import('../../assets/reg_labeling.png'),
-    'reg_audit':              () => import('../../assets/reg_audit.png'),
-    'dpr_report':             () => import('../../assets/dpr_report.png'),
-    'dpr_market':             () => import('../../assets/dpr_market.png'),
-    'dpr_finance':            () => import('../../assets/dpr_finance.png'),
-    'dpr_strategy':           () => import('../../assets/dpr_strategy.png'),
-    'recruit_interview':      () => import('../../assets/recruit_interview.png'),
-    'recruit_assessment':     () => import('../../assets/recruit_assessment.png'),
-    'recruit_onboarding':     () => import('../../assets/recruit_onboarding.png'),
-    'recruit_team':           () => import('../../assets/recruit_team.png'),
-    'pkg_design':             () => import('../../assets/pkg_design.png'),
-    'pkg_sourcing':           () => import('../../assets/pkg_sourcing.png'),
-    'pkg_testing':            () => import('../../assets/pkg_testing.png'),
-    'pkg_sustainability':     () => import('../../assets/pkg_sustainability.png'),
-    'ing_botanical':          () => import('../../assets/ing_botanical.png'),
-    'ing_active':             () => import('../../assets/ing_active.png'),
-    'ing_supplier':           () => import('../../assets/ing_supplier.png'),
-    'ing_docs':               () => import('../../assets/ing_docs.png'),
-    'brand_identity':         () => import('../../assets/brand_identity.png'),
-    'brand_strategy':         () => import('../../assets/brand_strategy.png'),
-    'brand_digital':          () => import('../../assets/brand_digital.png'),
-    'brand_retail':           () => import('../../assets/brand_retail.png'),
-    'scaleup_pilot':          () => import('../../assets/scaleup_pilot.png'),
-    'scaleup_process':        () => import('../../assets/scaleup_process.png'),
-    'scaleup_validation':     () => import('../../assets/scaleup_validation.png'),
-    'scaleup_commercial':     () => import('../../assets/scaleup_commercial.png'),
-    'export_cfs':             () => import('../../assets/export_cfs.png'),
-    'export_sds':             () => import('../../assets/export_sds.png'),
-    'export_multilabel':      () => import('../../assets/export_multilabel.png'),
-    'export_market':          () => import('../../assets/export_market.png'),
-    'rd_ai':                  () => import('../../assets/rd_ai.png'),
-    'rd_highthroughput':      () => import('../../assets/rd_highthroughput.png'),
-    'rd_lean':                () => import('../../assets/rd_lean.png'),
-    'rd_digital':             () => import('../../assets/rd_digital.png'),
-    'branding':               () => import('../../assets/Branding & Go-To-Market Consulting Services.png'),
-    'cat_luxury':             () => import('../../assets/cat_luxury.png'),
-  };
-  await Promise.all(
-    Object.entries(mods).map(async ([key, fn]) => {
-      try { const mod = await fn(); IMAGE_REGISTRY[key] = mod.default?.src || mod.default || null; }
-      catch { IMAGE_REGISTRY[key] = null; }
-    })
-  );
+  return Promise.resolve();
 }
 
 /* ─── Per-service hero image map ────────────────────────────── */
@@ -329,7 +320,7 @@ export default function ServiceDetailPage({ service }) {
             <nav style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '28px', flexWrap: 'wrap' }}>
               <Link href="/" style={{ fontSize: '12px', color: isLight ? 'rgba(45,39,54,0.55)' : 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Home</Link>
               <span style={{ color: isLight ? 'rgba(45,39,54,0.3)' : 'rgba(255,255,255,0.3)', fontSize: '12px' }}>›</span>
-              <Link href="/services" style={{ fontSize: '12px', color: isLight ? 'rgba(45,39,54,0.55)' : 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Services</Link>
+              <Link href="/services/" style={{ fontSize: '12px', color: isLight ? 'rgba(45,39,54,0.55)' : 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Services</Link>
               <span style={{ color: isLight ? 'rgba(45,39,54,0.3)' : 'rgba(255,255,255,0.3)', fontSize: '12px' }}>›</span>
               <span style={{ fontSize: '12px', color: svcColor, fontWeight: 600 }}>{service.name}</span>
             </nav>
@@ -1824,7 +1815,7 @@ function RelatedCard({ rel }) {
   const [hov, setHov] = useState(false);
   const heroUrl = HERO_IMGS[rel.slug] || null;
   return (
-    <Link href={`/services/${rel.slug}`} className="sdp-rel-link" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%', flexGrow: 1 }}>
+    <Link href={`/services/${rel.slug}/`} className="sdp-rel-link" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%', flexGrow: 1 }}>
       <div
         onMouseEnter={() => setHov(true)}
         onMouseLeave={() => setHov(false)}

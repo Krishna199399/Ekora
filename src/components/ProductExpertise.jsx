@@ -206,7 +206,7 @@ export default function ProductExpertise() {
             {/* CTA Button */}
             <motion.div variants={itemVariants} style={{ marginTop: '6px' }}>
               <Link
-                href="/product-expertise"
+                href="/product-expertise/"
                 className="pe-cta-btn"
                 style={{ 
                   display: 'inline-flex', 
