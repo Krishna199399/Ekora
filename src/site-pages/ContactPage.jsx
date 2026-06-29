@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import Counter from '../components/Counter';
+import OfficeMapSection from '../components/OfficeMapSection';
 
 /* ─── Brand Tokens ─────────────────────────────────────── */
 const DEEP  = '#0D2A52';
@@ -191,33 +192,7 @@ export default function ContactPage() {
                 })}
               </div>
 
-              {/* Direct contact */}
-              <ScrollReveal delay={0.2}>
-                <div className="cp-direct-box" style={{ background: `linear-gradient(135deg, ${DEEP}, #071730)`, borderRadius: '20px', padding: '32px', position: 'relative', overflow: 'hidden' }}>
-                  <div style={{ position: 'absolute', top: '-30px', right: '-30px', width: '150px', height: '150px', borderRadius: '50%', background: `radial-gradient(circle, ${GOLD}15, transparent 70%)`, pointerEvents: 'none' }} />
-                  <div style={{ fontSize: '11px', fontWeight: 700, color: GOLD, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px' }}>Direct Contact</div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                    {[
-                      { icon: Mail,   label: 'info@ekoraglobalconsulting.com', href: 'mailto:info@ekoraglobalconsulting.com' },
-                      { icon: Phone,  label: '+91 78929 78516',                href: 'tel:+917892978516' },
-                      { icon: MapPin, label: 'No. 39/3, Richmond Road, Bengaluru, India', href: null },
-                    ].map((item, i) => {
-                      const Icon = item.icon;
-                      const inner = (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                          <div style={{ width: '36px', height: '36px', borderRadius: '9px', background: `${GOLD}18`, border: `1px solid ${GOLD}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: GOLD, flexShrink: 0 }}>
-                            <Icon size={15} />
-                          </div>
-                          <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.4 }}>{item.label}</span>
-                        </div>
-                      );
-                      return item.href
-                        ? <a key={i} href={item.href} style={{ textDecoration: 'none', display: 'block', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.8'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}>{inner}</a>
-                        : <div key={i}>{inner}</div>;
-                    })}
-                  </div>
-                </div>
-              </ScrollReveal>
+
             </div>
 
             {/* ── RIGHT: Form ── */}
@@ -380,39 +355,12 @@ export default function ContactPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          3. TRUST / WHY SECTION
+          MAP SECTION
       ══════════════════════════════════════════════════ */}
-      <section className="cp-process-section" style={{ padding: '80px 0', background: CREAM, borderTop: '1px solid rgba(181,137,59,0.1)' }}>
-        <div className="cp-process-wrap" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
-          <ScrollReveal style={{ textAlign: 'center', marginBottom: '56px' }}>
-            <span style={{ fontSize: '10.5px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: GOLD, display: 'block', marginBottom: '14px' }}>What to Expect</span>
-            <h2 style={{ fontFamily: 'Syne, serif', fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 700, color: DEEP, margin: '0 0 16px' }}>Our Consulting Process</h2>
-            <div style={{ width: '48px', height: '3px', background: GOLD, margin: '0 auto', borderRadius: '2px' }} />
-          </ScrollReveal>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }} className="cp-process-grid">
-            {[
-              { num: '01', icon: MessageSquare, title: 'You Reach Out',        desc: 'Submit your inquiry through our contact form or reach us directly by email or phone.' },
-              { num: '02', icon: Microscope,    title: 'We Review',             desc: 'Our consulting team reviews your requirements and prepares a tailored response within 24–48 hours.' },
-              { num: '03', icon: Award,          title: 'Strategy Session',     desc: 'We schedule a discovery call to understand your project scope, goals, and timeline in detail.' },
-              { num: '04', icon: TrendingUp,    title: 'Consulting Begins',     desc: 'We develop your customized consulting plan and begin delivering measurable results.' },
-            ].map((step, i) => {
-              const Icon = step.icon;
-              return (
-                <ScrollReveal key={i} delay={i * 0.09} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                  <div className="cp-process-card" style={{ background: WHITE, border: '1px solid rgba(181,137,59,0.12)', borderRadius: '20px', padding: '32px 26px', textAlign: 'center', position: 'relative', overflow: 'hidden', transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)', height: '100%' }}>
-                    <div style={{ position: 'absolute', top: '14px', right: '18px', fontFamily: 'Syne, serif', fontSize: '52px', fontWeight: 800, color: `${GOLD}08`, lineHeight: 1, userSelect: 'none' }}>{step.num}</div>
-                    <div style={{ width: '52px', height: '52px', borderRadius: '14px', background: `${GOLD}12`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: GOLD, margin: '0 auto 20px' }}>
-                      <Icon size={22} />
-                    </div>
-                    <h3 style={{ fontFamily: 'Syne, serif', fontSize: '16px', fontWeight: 700, color: DEEP, margin: '0 0 10px' }}>{step.title}</h3>
-                    <p style={{ fontSize: '13px', color: MUTED, lineHeight: 1.7, margin: 0 }}>{step.desc}</p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <OfficeMapSection />
+
+
+
 
       {/* ══════════════════════════════════════════════════
           SUCCESS MODAL

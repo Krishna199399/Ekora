@@ -142,7 +142,7 @@ export default function Testimonials() {
             <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', minHeight: '300px', alignItems: 'center' }} className="tm-cta-img-wrap">
               <div style={{ position: 'absolute', width: '220px', height: '220px', background: 'radial-gradient(circle, rgba(181,137,59,0.3) 0%, transparent 65%)', filter: 'blur(40px)', zIndex: 1 }} />
               <div style={{ position: 'absolute', width: '100%', maxWidth: '360px', height: '240px', border: '1px solid rgba(181,137,59,0.3)', borderRadius: '20px', transform: 'rotate(5deg) translateY(12px) translateX(8px)', zIndex: 1 }} className="tm-cta-frame" />
-              <img src="/ChatGPT Image Jun 1, 2026, 08_11_46 PM.png" alt="Luxury EGC formulations"
+              <img src="/ekora-global-consulting-header.png" alt="Luxury EGC formulations"
                 style={{ width: '100%', maxWidth: '360px', height: 'auto', borderRadius: '18px', boxShadow: '0 25px 55px rgba(0,0,0,0.5)', transform: 'rotate(-3deg) translateY(-8px)', zIndex: 2, transition: 'all 0.5s ease', border: '1px solid rgba(255,255,255,0.08)' }}
                 className="tm-cta-img" />
             </div>

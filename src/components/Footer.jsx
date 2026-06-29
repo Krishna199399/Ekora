@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { X, Award, ArrowUp, Mail, Phone, MapPin, ArrowRight, Check } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import Link from 'next/link';
 import ScrollReveal from './ScrollReveal';
-import { useConsultationModal } from '../context/ConsultationModalContext';
 
 /* ─── Brand Tokens ─────────────────────────────────────── */
 const GOLD  = '#B5893B';
@@ -29,31 +28,46 @@ function Reveal({ children, delay = 0, dir = 'up', style = {} }) {
 }
 
 /* ─── Data ─────────────────────────────────────────────── */
-
-const SERVICE_LINKS = [
-  { label: 'R&D & Product Formulation',             href: '/services/cosmetic-research-product-formulation/' },
-  { label: 'Stability Testing',                     href: '/services/cosmetic-stability-testing-shelf-life-validation/' },
-  { label: 'Plant Setup & Factory Planning',        href: '/services/plant-setup-factory-planning/' },
-  { label: 'Turnkey Project Solutions',             href: '/services/turnkey-cosmetic-project-solutions/' },
-  { label: 'Manufacturing Consulting',              href: '/services/cosmetic-manufacturing-consulting/' },
-  { label: 'Regulatory Compliance',                 href: '/services/regulatory-compliance-support/' },
-  { label: 'Private Label Manufacturing',           href: '/services/private-label-contract-manufacturing/' },
-  { label: 'Branding & Go-to-Market',              href: '/services/branding-go-to-market-consulting/' },
-];
-
-const COMPANY_LINKS = [
-  { label: 'About Us',          href: '/about/' },
-  { label: 'Our Vision',        href: '/about/' },
-  { label: 'Leadership',        href: '/about/' },
-  { label: 'Core Values',       href: '/about/' },
-  { label: 'Global Network',    href: '/about/' },
-];
-
-const EXPLORE_LINKS = [
-  { label: 'Product Expertise', href: '/product-expertise/' },
-  { label: 'Services Overview', href: '/services/' },
-  { label: 'Contact Us',        href: '/contact/' },
-  { label: 'Get Consultation',  href: '/contact/' },
+const COLUMNS = [
+  {
+    title: 'R&D & Formulation',
+    links: [
+      { label: 'Product Formulation', href: '/services/cosmetic-research-product-formulation/' },
+      { label: 'Stability Testing', href: '/services/cosmetic-stability-testing-shelf-life-validation/' },
+      { label: 'Ingredient Sourcing', href: '/services/ingredient-sourcing-support/' },
+      { label: 'R&D Innovation', href: '/services/cosmetic-innovation-rd-productivity-consulting/' },
+    ],
+  },
+  {
+    title: 'Manufacturing',
+    links: [
+      { label: 'Plant Setup', href: '/services/plant-setup-factory-planning/' },
+      { label: 'Turnkey Projects', href: '/services/turnkey-cosmetic-project-solutions/' },
+      { label: 'Manufacturing Consulting', href: '/services/cosmetic-manufacturing-consulting/' },
+      { label: 'Scale-Up Support', href: '/services/scale-up-commercialization-support/' },
+      { label: 'Private Label Manufacturing', href: '/services/private-label-contract-manufacturing/' },
+    ],
+  },
+  {
+    title: 'Business Advisory',
+    links: [
+      { label: 'Regulatory Support', href: '/services/regulatory-compliance-support/' },
+      { label: 'Export Documentation', href: '/services/export-documentation-support/' },
+      { label: 'DPR Consulting', href: '/services/cosmetic-dpr-business-consulting/' },
+      { label: 'Recruitment Support', href: '/services/technical-recruitment-team-building/' },
+      { label: 'Packaging Development', href: '/services/packaging-development-sourcing/' },
+      { label: 'Go-To-Market', href: '/services/branding-go-to-market-consulting/' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'Home', href: '/' },
+      { label: 'About Us', href: '/about/' },
+      { label: 'R&D Innovation', href: '/rd-innovation/' },
+      { label: 'Contact Us', href: '/contact/' },
+    ],
+  },
 ];
 
 const SOCIALS = [
@@ -78,8 +92,7 @@ const SOCIALS = [
 /* ─── Footer Link component ─────────────────────────────── */
 function FLink({ href, children }) {
   return (
-    <Link href={href} className="ft-link" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none', fontSize: '13.5px', display: 'flex', alignItems: 'center', gap: '7px', padding: '4px 0', transition: 'all 0.22s ease' }}>
-      <span className="ft-link-dot" style={{ width: '4px', height: '4px', borderRadius: '50%', background: GOLD, opacity: 0.4, flexShrink: 0, transition: 'all 0.22s ease' }} />
+    <Link href={href} className="ft-link" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontSize: '13.5px', display: 'inline-block', padding: '2px 0', transition: 'all 0.22s ease' }}>
       {children}
     </Link>
   );
@@ -87,10 +100,7 @@ function FLink({ href, children }) {
 
 /* ─── Main Component ───────────────────────────────────── */
 export default function Footer() {
-  const { openModal } = useConsultationModal();
-  const [email, setEmail]         = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-  const [showTop, setShowTop]     = useState(false);
+  const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 600);
@@ -98,136 +108,51 @@ export default function Footer() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    if (email.trim() && /\S+@\S+\.\S+/.test(email)) {
-      setSubscribed(true);
-      setEmail('');
-      setTimeout(() => setSubscribed(false), 4000);
-    }
-  };
-
   return (
     <>
-      <footer style={{ background: '#0D2A52', color: 'rgba(255,255,255,0.65)', fontFamily: 'var(--font-sans)', position: 'relative', overflow: 'hidden' }}>
+      <footer style={{ background: '#0b2146', color: 'rgba(255,255,255,0.7)', fontFamily: 'var(--font-sans)', position: 'relative', overflow: 'hidden' }}>
 
         {/* ── Background decorative glows ── */}
-        <div style={{ position: 'absolute', top: '-100px', left: '-100px', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(181,137,59,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: '0', right: '-60px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(123,92,183,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(181,137,59,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(181,137,59,0.025) 1px, transparent 1px)', backgroundSize: '72px 72px', pointerEvents: 'none' }} />
-
-        {/* ══════════════════════════════════════════════════
-            CTA BANNER
-        ══════════════════════════════════════════════════ */}
-        <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', position: 'relative', zIndex: 1 }}>
-          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '72px 40px' }}>
-            <Reveal>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '48px', alignItems: 'center' }} className="ft-cta-grid">
-                <div>
-                  <span style={{ fontSize: '10px', fontWeight: 700, color: GOLD, letterSpacing: '3px', textTransform: 'uppercase', display: 'block', marginBottom: '14px' }}>Ready to Start?</span>
-                  <h2 style={{ fontFamily: 'Syne, var(--font-serif)', fontSize: 'clamp(22px, 3vw, 38px)', fontWeight: 700, color: '#fff', margin: '0 0 14px', lineHeight: 1.15 }}>
-                    Let's Build Your Next<br />
-                    <span style={{ color: GOLD }}>Cosmetic Success Story</span>
-                  </h2>
-                  <div style={{ width: '44px', height: '2.5px', background: `linear-gradient(90deg, ${GOLD}, ${GOLD2})`, borderRadius: '2px', marginBottom: '16px' }} />
-                  <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, margin: 0, maxWidth: '580px' }}>
-                    From concept to commercialization, EGC's expert consulting team is ready to help you navigate every stage of cosmetic development, manufacturing, and growth.
-                  </p>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', minWidth: '220px' }}>
-                  <button onClick={() => openModal('footer_cta')} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px 28px', background: `linear-gradient(135deg, ${GOLD}, ${GOLD2})`, color: '#fff', textDecoration: 'none', border: 'none', borderRadius: '10px', fontWeight: 700, fontSize: '14px', boxShadow: `0 8px 28px ${GOLD}40`, cursor: 'pointer', transition: 'all 0.3s ease', fontFamily: 'var(--font-sans)' }}
-                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = `0 14px 36px ${GOLD}55`; }}
-                    onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = `0 8px 28px ${GOLD}40`; }}>
-                    Get Free Consultation <ArrowRight size={15} />
-                  </button>
-                  <Link href="/services/" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px 28px', background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.75)', textDecoration: 'none', borderRadius: '10px', fontWeight: 600, fontSize: '14px', border: '1px solid rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)', transition: 'all 0.3s ease' }}
-                    onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.11)'}
-                    onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}>
-                    Explore Services
-                  </Link>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-
-        {/* ══════════════════════════════════════════════════
-            NEWSLETTER STRIP
-        ══════════════════════════════════════════════════ */}
-        <div style={{ background: 'rgba(181,137,59,0.07)', borderBottom: '1px solid rgba(181,137,59,0.12)', position: 'relative', zIndex: 1 }}>
-          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '28px 40px' }}>
-            <Reveal>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }} className="ft-newsletter-row">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                  <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: `${GOLD}18`, border: `1px solid ${GOLD}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: GOLD, flexShrink: 0 }}>
-                    <Mail size={18} />
-                  </div>
-                  <div>
-                    <div style={{ fontFamily: 'Syne, var(--font-serif)', fontSize: '16px', fontWeight: 700, color: '#fff', marginBottom: '3px' }}>Stay Ahead in Beauty Innovation</div>
-                    <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.45)' }}>Formulation R&D insights, regulatory updates & market intelligence, delivered monthly.</div>
-                  </div>
-                </div>
-                {subscribed ? (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 20px', background: 'rgba(90,138,107,0.2)', border: '1px solid rgba(90,138,107,0.4)', borderRadius: '8px', color: '#6aaa78', fontSize: '13.5px', fontWeight: 600 }}>
-                    <Check size={15} /> Subscribed! Thank you.
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: '10px' }} className="ft-newsletter-form">
-                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Your email address" required
-                      style={{ padding: '12px 18px', border: '1px solid rgba(181,137,59,0.25)', background: 'rgba(255,255,255,0.05)', color: '#fff', borderRadius: '8px', fontSize: '13.5px', width: '260px', outline: 'none', fontFamily: 'var(--font-sans)', transition: 'border-color 0.2s' }}
-                      onFocus={e => e.target.style.borderColor = GOLD}
-                      onBlur={e => e.target.style.borderColor = 'rgba(181,137,59,0.25)'} />
-                    <button type="submit" style={{ padding: '12px 22px', background: GOLD, color: '#fff', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '13.5px', cursor: 'pointer', fontFamily: 'var(--font-sans)', transition: 'all 0.25s ease', boxShadow: `0 4px 14px ${GOLD}30` }}
-                      onMouseEnter={e => { e.currentTarget.style.background = GOLD2; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-                      onMouseLeave={e => { e.currentTarget.style.background = GOLD; e.currentTarget.style.transform = 'translateY(0)'; }}>
-                      Subscribe
-                    </button>
-                  </form>
-                )}
-              </div>
-            </Reveal>
-          </div>
-        </div>
+        <div style={{ position: 'absolute', top: '-100px', left: '-100px', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(181,137,59,0.05) 0%, transparent 65%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: '0', right: '-60px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(123,92,183,0.05) 0%, transparent 65%)', pointerEvents: 'none' }} />
 
         {/* ══════════════════════════════════════════════════
             MAIN LINKS SECTION
         ══════════════════════════════════════════════════ */}
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 40px 56px', position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 0.8fr 0.8fr', gap: '52px' }} className="ft-main-grid">
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 40px 40px', position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1fr 1fr', gap: '40px' }} className="ft-main-grid">
 
             {/* ── Col 1: Brand ── */}
             <Reveal dir="left" delay={0}>
               <div>
-                <img src="/logo_white.png" alt="EGC Ekora Global Consulting" style={{ height: '48px', width: 'auto', display: 'block', marginBottom: '22px' }} />
-                <p style={{ fontSize: '13.5px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.8, marginBottom: '28px', maxWidth: '340px' }}>
-                  EGC Ekora Global Consulting bridges cosmetic science and business success, delivering end to end advisory across formulation, manufacturing, regulatory compliance, and commercial strategy.
+                <img src="/logo_white_footer.png" alt="EGC Ekora Global Consulting" style={{ height: '48px', width: 'auto', display: 'block', marginBottom: '22px' }} />
+                <p style={{ fontSize: '13.5px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: '24px', maxWidth: '320px' }}>
+                  EGC Ekora Global Consulting bridges cosmetic science and business success through formulation, manufacturing, regulatory compliance and commercialization support.
                 </p>
 
                 {/* Contact details */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '28px' }}>
-                  {[
-                    { icon: <Mail size={13} />,   text: 'info@ekoraglobalconsulting.com',                           href: 'mailto:info@ekoraglobalconsulting.com' },
-                    { icon: <Phone size={13} />,  text: '+91 78929 78516',                                          href: 'tel:+917892978516' },
-                    { icon: <MapPin size={13} />, text: 'No. 39/3, Richmond Road, Bengaluru - 560025, India',       href: null },
-                  ].map((item, i) => (
-                    item.href
-                      ? <a key={i} href={item.href} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', color: 'rgba(255,255,255,0.45)', textDecoration: 'none', fontSize: '13px', lineHeight: 1.4, transition: 'color 0.2s' }}
-                          onMouseEnter={e => e.currentTarget.style.color = GOLD}
-                          onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.45)'}>
-                          <span style={{ color: GOLD, marginTop: '2px', flexShrink: 0 }}>{item.icon}</span> {item.text}
-                        </a>
-                      : <div key={i} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', color: 'rgba(255,255,255,0.45)', fontSize: '13px', lineHeight: 1.5 }}>
-                          <span style={{ color: GOLD, marginTop: '2px', flexShrink: 0 }}>{item.icon}</span> {item.text}
-                        </div>
-                  ))}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '28px' }}>
+                  <a href="mailto:info@ekoraglobalconsulting.com" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontSize: '13.5px', transition: 'color 0.2s', width: 'fit-content' }}
+                     onMouseEnter={e => e.currentTarget.style.color = GOLD}
+                     onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}>
+                    info@ekoraglobalconsulting.com
+                  </a>
+                  <a href="tel:+917892978516" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontSize: '13.5px', transition: 'color 0.2s', width: 'fit-content' }}
+                     onMouseEnter={e => e.currentTarget.style.color = GOLD}
+                     onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.7)'}>
+                    +91 78929 78516
+                  </a>
+                  <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13.5px', lineHeight: 1.5 }}>
+                    Bengaluru, India
+                  </div>
                 </div>
 
                 {/* Social icons */}
                 <div style={{ display: 'flex', gap: '10px' }}>
                   {SOCIALS.map((s, i) => (
-                    <a key={i} href={s.href} target="_blank" rel="noreferrer" title={s.label} className="ft-social" style={{ width: '36px', height: '36px', borderRadius: '9px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.5)', textDecoration: 'none', transition: 'all 0.25s ease' }}
-                      onMouseEnter={e => { e.currentTarget.style.background = `${GOLD}18`; e.currentTarget.style.borderColor = `${GOLD}40`; e.currentTarget.style.color = GOLD; e.currentTarget.style.transform = 'translateY(-3px)'; }}
-                      onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
+                    <a key={i} href={s.href} target="_blank" rel="noreferrer" title={s.label} className="ft-social" style={{ width: '38px', height: '38px', borderRadius: '6px', background: 'transparent', border: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.5)', textDecoration: 'none', transition: 'all 0.25s ease' }}
+                      onMouseEnter={e => { e.currentTarget.style.borderColor = GOLD; e.currentTarget.style.color = GOLD; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                      onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
                       {s.icon}
                     </a>
                   ))}
@@ -235,104 +160,45 @@ export default function Footer() {
               </div>
             </Reveal>
 
-            {/* ── Col 2: Services ── */}
-            <Reveal dir="up" delay={80}>
-              <div>
-                <div style={{ fontSize: '10px', fontWeight: 800, color: GOLD, letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '18px', height: '2px', background: GOLD, borderRadius: '1px', display: 'inline-block' }} />
-                  Our Services
+            {/* ── Link Columns ── */}
+            {COLUMNS.map((col, idx) => (
+              <Reveal key={col.title} dir="up" delay={80 * (idx + 1)}>
+                <div>
+                  <div style={{ fontSize: '14.5px', fontWeight: 600, color: GOLD, marginBottom: '22px', fontFamily: 'var(--font-sans)', letterSpacing: '0.5px' }}>
+                    {col.title}
+                  </div>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    {col.links.map((link, i) => (
+                      <li key={i}>
+                        <FLink href={link.href}>{link.label}</FLink>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  {SERVICE_LINKS.map((s, i) => (
-                    <li key={i}><FLink href={s.href}>{s.label}</FLink></li>
-                  ))}
-                  <li style={{ marginTop: '10px' }}>
-                    <Link href="/services/" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: 700, color: GOLD, textDecoration: 'none', padding: '7px 14px', borderRadius: '7px', border: `1px solid ${GOLD}30`, background: `${GOLD}0a`, transition: 'all 0.25s ease' }}
-                      onMouseEnter={e => { e.currentTarget.style.background = `${GOLD}18`; e.currentTarget.style.transform = 'translateX(3px)'; }}
-                      onMouseLeave={e => { e.currentTarget.style.background = `${GOLD}0a`; e.currentTarget.style.transform = 'translateX(0)'; }}>
-                      All Services <ArrowRight size={11} />
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </Reveal>
+              </Reveal>
+            ))}
 
-            {/* ── Col 3: Company ── */}
-            <Reveal dir="up" delay={160}>
-              <div>
-                <div style={{ fontSize: '10px', fontWeight: 800, color: GOLD, letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '18px', height: '2px', background: GOLD, borderRadius: '1px', display: 'inline-block' }} />
-                  Company
-                </div>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  {COMPANY_LINKS.map((c, i) => (
-                    <li key={i}><FLink href={c.href}>{c.label}</FLink></li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-
-            {/* ── Col 4: Explore ── */}
-            <Reveal dir="right" delay={240}>
-              <div>
-                <div style={{ fontSize: '10px', fontWeight: 800, color: GOLD, letterSpacing: '2.5px', textTransform: 'uppercase', marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '18px', height: '2px', background: GOLD, borderRadius: '1px', display: 'inline-block' }} />
-                  Explore
-                </div>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  {EXPLORE_LINKS.map((e, i) => {
-                    if (e.label === 'Get Consultation') {
-                      return (
-                        <li key={i}>
-                          <button onClick={() => openModal('footer_link')} className="ft-link" style={{ background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', color: 'rgba(255,255,255,0.5)', textDecoration: 'none', fontSize: '13.5px', display: 'flex', alignItems: 'center', gap: '7px', padding: '4px 0', transition: 'all 0.22s ease', width: '100%' }}>
-                            <span className="ft-link-dot" style={{ width: '4px', height: '4px', borderRadius: '50%', background: GOLD, opacity: 0.4, flexShrink: 0, transition: 'all 0.22s ease' }} />
-                            {e.label}
-                          </button>
-                        </li>
-                      );
-                    }
-                    return <li key={i}><FLink href={e.href}>{e.label}</FLink></li>;
-                  })}
-                </ul>
-
-                {/* Global presence micro-card */}
-                <div style={{ marginTop: '28px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '12px', padding: '18px' }}>
-                  <div style={{ fontSize: '10px', fontWeight: 700, color: GOLD, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '10px' }}>Global Presence</div>
-                  {[
-                    ['🇮🇳', 'India (HQ)', 'Bengaluru'],
-                    ['🌍', 'Middle East', 'UAE · KSA'],
-                    ['🌐', 'International', 'EU · N.America'],
-                  ].map(([flag, region, detail], i) => (
-                    <div key={i} style={{ display: 'flex', gap: '8px', alignItems: 'center', padding: '5px 0', borderBottom: i < 2 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}>
-                      <span style={{ fontSize: '14px' }}>{flag}</span>
-                      <div>
-                        <div style={{ fontSize: '11.5px', fontWeight: 600, color: 'rgba(255,255,255,0.65)', lineHeight: 1 }}>{region}</div>
-                        <div style={{ fontSize: '10.5px', color: 'rgba(255,255,255,0.35)', marginTop: '2px' }}>{detail}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
           </div>
-
-
 
           {/* ══════════════════════════════════════════════════
               COPYRIGHT BAR
           ══════════════════════════════════════════════════ */}
           <Reveal delay={60}>
-            <div style={{ marginTop: '32px', paddingTop: '24px', borderTop: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }} className="ft-copyright">
-              <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.3)' }}>
-                © {new Date().getFullYear()} EGC Ekora Global Consulting Pvt. Ltd. · All Rights Reserved.
+            <div style={{ marginTop: '56px', paddingTop: '24px', borderTop: '1px solid rgba(255,255,255,0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }} className="ft-copyright">
+              <span style={{ fontSize: '12.5px', color: 'rgba(255,255,255,0.5)' }}>
+                © {new Date().getFullYear()} EGC Ekora Global Consulting Pvt. Ltd. All Rights Reserved.
               </span>
-              <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-                {['Privacy Policy', 'Terms of Use', 'Sitemap'].map((t, i) => (
-                  <span key={i} style={{ fontSize: '11.5px', color: 'rgba(255,255,255,0.28)', cursor: 'pointer', transition: 'color 0.2s' }}
+              <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+                {[
+                  { label: 'Privacy Policy', href: '/privacy/' },
+                  { label: 'Terms & Conditions', href: '/terms-conditions/' },
+                  { label: 'Sitemap', href: '#' }
+                ].map((t, i) => (
+                  <Link key={i} href={t.href} style={{ fontSize: '12.5px', color: 'rgba(255,255,255,0.5)', textDecoration: 'none', transition: 'color 0.2s' }}
                     onMouseEnter={e => e.currentTarget.style.color = GOLD}
-                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.28)'}>
-                    {t}
-                  </span>
+                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
+                    {t.label}
+                  </Link>
                 ))}
               </div>
             </div>
@@ -364,34 +230,24 @@ export default function Footer() {
         <ArrowUp size={20} />
       </button>
 
-
-
       {/* ── STYLES ── */}
       <style dangerouslySetInnerHTML={{ __html: `
-        .ft-link:hover { color: #b5893b !important; padding-left: 4px; }
-        .ft-link:hover .ft-link-dot { opacity: 1 !important; }
-
+        .ft-link:hover { color: #b5893b !important; transform: translateX(4px); }
+        .ft-link { transition: all 0.22s ease !important; display: inline-block !important; }
 
         /* Tablet */
-        @media (max-width: 1100px) {
-          .ft-main-grid { grid-template-columns: 1fr 1fr !important; gap: 36px !important; }
+        @media (max-width: 1024px) {
+          .ft-main-grid { grid-template-columns: 1.5fr 1fr 1fr !important; gap: 36px !important; }
         }
-        /* Mobile */
+        /* Small Tablet / Large Mobile */
         @media (max-width: 768px) {
-          .ft-main-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
-          .ft-cta-grid  { grid-template-columns: 1fr !important; }
-          .ft-newsletter-row { flex-direction: column !important; align-items: flex-start !important; }
-          .ft-newsletter-form { width: 100% !important; }
-          .ft-newsletter-form input { width: 100% !important; min-width: 0 !important; flex: 1 !important; }
-
-          .ft-copyright { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+          .ft-main-grid { grid-template-columns: 1fr 1fr !important; gap: 28px !important; }
+          .ft-copyright { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
           footer > div > div { padding-left: 20px !important; padding-right: 20px !important; }
         }
-        /* Small Mobile */
+        /* Mobile */
         @media (max-width: 480px) {
-          .ft-newsletter-form { flex-direction: column !important; width: 100% !important; }
-          .ft-newsletter-form input { width: 100% !important; box-sizing: border-box !important; }
-          .ft-newsletter-form button { width: 100% !important; }
+          .ft-main-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 680px) {
           footer { padding-bottom: 70px; }
@@ -401,7 +257,6 @@ export default function Footer() {
           }
         }
       `}} />
-
     </>
   );
 }

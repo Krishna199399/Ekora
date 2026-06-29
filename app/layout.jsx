@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" type="image/png" href="/logo_black.png" />
+        <link rel="icon" type="image/png" href="/ekora-global-consulting-logo-black.png" />
       </head>
       <body>
         <ConsultationModalProvider>

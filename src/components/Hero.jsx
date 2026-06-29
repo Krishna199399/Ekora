@@ -272,7 +272,7 @@ export default function Hero() {
         className="hero-right"
       >
         <motion.img
-          src="/ChatGPT Image Jun 1, 2026, 08_11_46 PM.png"
+          src="/ekora-global-consulting-header.png"
           alt="EGC Premium Cosmetic Lab and Products"
           style={{
             width: '100%',

@@ -12,7 +12,7 @@ const CATEGORIES = [
     key: 'skincare',
     label: 'Skincare',
     emoji: '✨',
-    bgImg: '/cat_skincare.png',
+    bgImg: '/skincare-products-manufacturing-ekora.png',
     title: 'Skincare Formulations',
     desc: 'Clinical, aesthetic, and botanical formulations built with highly stable active ingredients for superior skin performance.',
     items: [
@@ -245,7 +245,7 @@ export default function ProductExpertise() {
           className="pe-header-right"
         >
           <motion.img 
-            src="/pe_hero_banner.png" 
+            src="/cosmetic-formulation-product-categories.png" 
             alt="EGC Product Expertise Formulation Cosmetics"
             style={{ 
               width: '100%', 

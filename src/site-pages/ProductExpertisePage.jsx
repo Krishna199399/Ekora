@@ -32,7 +32,7 @@ const CATEGORIES = [
       'Skincare remains one of the largest and fastest-evolving categories within the global beauty industry. Consumers increasingly seek products that combine efficacy, ingredient transparency, sensory appeal, and long-term skin health benefits.',
       'We support the development of skincare products designed for hydration, cleansing, protection, anti-aging, barrier repair, brightening, and targeted treatment applications.'
     ],
-    img: '/pe_cat_skincare.png',
+    img: '/pe_skincare-products-manufacturing-ekora.png',
     products: ['Face Wash', 'Serum', 'Moisturizer', 'Sunscreen', 'Face Mask', 'Toner'],
     badge: 'Most Popular',
   },
@@ -44,7 +44,7 @@ const CATEGORIES = [
       'Haircare products require a careful balance of cleansing performance, conditioning benefits, scalp compatibility, and consumer experience. Product performance often depends on formulation stability, surfactant selection, active ingredient compatibility, and sensory optimization.',
       'We help businesses develop haircare solutions that address cleansing, nourishment, styling, repair, scalp wellness, and hair growth support.'
     ],
-    img: '/pe_cat_haircare.png',
+    img: '/haircare-products-manufacturing-ekora.png',
     products: ['Shampoo', 'Conditioner', 'Hair Oil', 'Hair Serum', 'Hair Mask'],
     badge: null,
   },
@@ -56,7 +56,7 @@ const CATEGORIES = [
       'Body care products continue to experience strong demand as consumers focus on skin wellness, self-care routines, and premium personal care experiences. These products require effective moisturization, skin compatibility, texture optimization, and appealing sensory characteristics.',
       'Our expertise covers both daily care products and specialized body treatment formulations.'
     ],
-    img: '/pe_cat_bodycare.png',
+    img: '/bodycare-product-manufacturing-ekora.png',
     products: ['Body Lotion', 'Body Butter', 'Body Wash', 'Body Scrub'],
     badge: null,
   },
@@ -80,7 +80,7 @@ const CATEGORIES = [
       "The men's grooming market continues to expand as consumers seek specialized products designed for facial care, beard maintenance, styling, and personal grooming routines.",
       "We help brands create products tailored to modern grooming preferences, functionality, and consumer expectations."
     ],
-    img: '/pe_cat_mens.png',
+    img: '/mens-product-manufacturing-ekora.png',
     products: ['Beard Oil', 'Face Wash', 'Hair Styling Products', 'Aftershave Products'],
     badge: 'Trending',
   },
@@ -92,7 +92,7 @@ const CATEGORIES = [
       'Baby care formulations require a heightened focus on safety, mildness, skin compatibility, and quality assurance. Product development in this category demands careful ingredient selection and formulation design to support delicate skin and hair.',
       'We assist businesses in developing safe and gentle baby care solutions suitable for daily use.'
     ],
-    img: '/pe_cat_babycare.png',
+    img: '/babycare-products-mamnufacturing-ekora.png',
     products: ['Baby Lotion', 'Baby Shampoo', 'Rash Cream'],
     badge: null,
   },
@@ -104,7 +104,7 @@ const CATEGORIES = [
       'Demand for herbal, botanical, and naturally inspired beauty products continues to grow across global markets. Consumers increasingly value ingredient transparency, plant-based solutions, and wellness-focused formulations.',
       'Our expertise combines traditional ingredient knowledge with modern formulation science to create products aligned with evolving consumer preferences.'
     ],
-    img: '/pe_cat_herbal.png',
+    img: '/herbal-comstics-manufacturing-ekora.png',
     products: ['Ayurvedic Products', 'Herbal Oils', 'Natural Skincare'],
     badge: null,
   },
@@ -116,7 +116,7 @@ const CATEGORIES = [
       'Beauty and wellness are becoming increasingly interconnected. Consumers now seek products that support appearance, lifestyle, wellness goals, and overall self-care experiences.',
       'We support the development of emerging beauty and wellness categories that combine cosmetic innovation with functional benefits.'
     ],
-    img: '/pe_cat_wellness.png',
+    img: '/wellness-product-manufacturing-ekora.png',
     products: ['Beauty Supplements', 'Nutricosmetics', 'Functional Beauty Products'],
     badge: 'Emerging',
   },
@@ -128,7 +128,7 @@ const CATEGORIES = [
       'Premium beauty consumers expect superior product performance, elegant aesthetics, unique ingredients, and exceptional user experiences. Product development within this segment requires attention to detail across formulation, packaging, positioning, and sensory design.',
       'We help brands create distinctive premium beauty experiences that support long-term brand value.'
     ],
-    img: '/pe_cat_luxury.png',
+    img: '/luxury-cosmetics-manufacturing.png',
     products: ['Premium Skincare', 'Gold-Infused Products', 'Luxury Collections'],
     badge: 'Premium',
   },
@@ -140,7 +140,7 @@ const CATEGORIES = [
       'Color cosmetics combine visual appeal, performance, texture, wearability, and formulation stability. Product development in this category requires specialized expertise across pigments, sensory characteristics, application performance, and consumer expectations.',
       'We support beauty brands in creating innovative makeup products for diverse consumer needs.'
     ],
-    img: '/pe_cat_color.png',
+    img: '/color-cosmetics-manufacturing-ekora.png',
     products: ['Foundation', 'Compact Powder', 'Lipstick', 'Mascara', 'Blush', 'Eyeliner'],
     badge: null,
   },
@@ -152,7 +152,7 @@ const CATEGORIES = [
       'Fragrance development blends creativity, technical precision, ingredient compatibility, and consumer preference analysis. Successful fragrance products require careful balancing of scent profiles, performance, longevity, and market positioning.',
       'We support the development of both personal fragrance and lifestyle fragrance product categories.'
     ],
-    img: '/pe_cat_fragrance.png',
+    img: '/fragrance-product-manufacturing-ekora.png',
     products: ['Eau De Parfum (EDP)', 'Eau De Toilette (EDT)', 'Body Mist', 'Roll On Perfumes', 'Attar Products'],
     badge: null,
   },
@@ -163,7 +163,7 @@ const CATEGORIES = [
     fullDesc: [
       'Nail care products require specialized formulation techniques that support product durability, appearance, user safety, and application performance. This category continues to evolve through innovation, fashion trends, and consumer demand for healthier nail solutions.'
     ],
-    img: '/pe_cat_nail.png',
+    img: '/nailcare-product-manufacturing-ekora.png',
     products: ['Nail Polish', 'Gel Polish', 'Nail Strengthener', 'Nail Serum', 'Nail Remover'],
     badge: null,
   },
@@ -175,7 +175,7 @@ const CATEGORIES = [
       'Cosmeceuticals bridge the gap between traditional cosmetics and science-driven skincare solutions. These products often incorporate advanced active ingredients designed to support specific skin concerns while maintaining cosmetic compliance requirements.',
       'We help businesses develop formulations built around efficacy, stability, safety, and market relevance.'
     ],
-    img: '/pe_cat_cosmeceutical.png',
+    img: '/cosmaceutical-products-manufacturing.png',
     products: ['Dermatology Products', 'Active Ingredient Formulations', 'Clinical Skin Care Products'],
     badge: null,
   },
@@ -186,7 +186,7 @@ const CATEGORIES = [
     fullDesc: [
       'Consumer demand for clean-label, cruelty-free, vegan, and environmentally conscious beauty products continues to reshape the cosmetic industry. Brands entering this category must carefully balance ingredient selection, performance expectations, sustainability goals, and transparency requirements.'
     ],
-    img: '/pe_cat_vegan.png',
+    img: '/vegan-cosmetics-manufacturing.png',
     products: ['Vegan Beauty Products', 'Cruelty-Free Products', 'Clean-Label Formulations'],
     badge: null,
   },
@@ -198,7 +198,7 @@ const CATEGORIES = [
       'Professional beauty environments require products designed for performance, consistency, efficiency, and repeat use. These products often differ significantly from retail formulations in both functionality and application requirements.',
       'We support salons, spas, wellness centers, and professional beauty operators with specialized product development solutions.'
     ],
-    img: '/pe_cat_spa.png',
+    img: '/spa-cosmetic-manufacturing.png',
     products: ['Professional Facial Kits', 'Salon Hair Systems', 'Spa Product Lines'],
     badge: null,
   },
@@ -352,12 +352,12 @@ function SectionBadge({ children }) {
 /* ─── Hero Floating Collage ────────────────────────────────────── */
 function HeroCollage() {
   const collageItems = [
-    { img: '/pe_cat_skincare.png',  top: '4%',  left: '8%',  size: 195, rot: '-5deg', dur: 3.8, delay: '0s',    z: 3 },
-    { img: '/pe_cat_fragrance.png', top: '0%',  left: '52%', size: 170, rot:  '6deg', dur: 4.1, delay: '0.4s',  z: 4 },
-    { img: '/pe_cat_luxury.png',    top: '30%', left: '30%', size: 205, rot:  '0deg', dur: 3.5, delay: '0.7s',  z: 5 },
-    { img: '/pe_cat_color.png',     top: '58%', left: '6%',  size: 162, rot: '-4deg', dur: 4.4, delay: '0.2s',  z: 3 },
-    { img: '/pe_cat_haircare.png',  top: '60%', left: '55%', size: 155, rot:  '5deg', dur: 3.9, delay: '0.6s',  z: 3 },
-    { img: '/pe_cat_wellness.png',  top: '20%', left: '-3%', size: 125, rot: '-7deg', dur: 4.2, delay: '0.9s',  z: 2 },
+    { img: '/pe_skincare-products-manufacturing-ekora.png',  top: '4%',  left: '8%',  size: 195, rot: '-5deg', dur: 3.8, delay: '0s',    z: 3 },
+    { img: '/fragrance-product-manufacturing-ekora.png', top: '0%',  left: '52%', size: 170, rot:  '6deg', dur: 4.1, delay: '0.4s',  z: 4 },
+    { img: '/luxury-cosmetics-manufacturing.png',    top: '30%', left: '30%', size: 205, rot:  '0deg', dur: 3.5, delay: '0.7s',  z: 5 },
+    { img: '/color-cosmetics-manufacturing-ekora.png',     top: '58%', left: '6%',  size: 162, rot: '-4deg', dur: 4.4, delay: '0.2s',  z: 3 },
+    { img: '/haircare-products-manufacturing-ekora.png',  top: '60%', left: '55%', size: 155, rot:  '5deg', dur: 3.9, delay: '0.6s',  z: 3 },
+    { img: '/wellness-product-manufacturing-ekora.png',  top: '20%', left: '-3%', size: 125, rot: '-7deg', dur: 4.2, delay: '0.9s',  z: 2 },
   ];
 
   return (
@@ -1059,7 +1059,7 @@ export default function ProductExpertisePage() {
       >
         {/* Background */}
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/pe_hero_banner.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.16 }} />
+          <img src="/cosmetic-formulation-product-categories.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.16 }} />
           <div style={{
             position: 'absolute', inset: 0,
             background: `linear-gradient(135deg, ${NAVY} 0%, rgba(13,42,82,0.92) 60%, rgba(13,42,82,0.75) 100%)`,
@@ -1711,7 +1711,7 @@ export default function ProductExpertisePage() {
         style={{ position: 'relative', overflow: 'hidden', minHeight: '580px', display: 'flex', alignItems: 'center' }}
       >
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/pe_hero_banner.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src="/cosmetic-formulation-product-categories.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(13,42,82,0.96) 0%, rgba(13,42,82,0.88) 55%, rgba(10,30,60,0.93) 100%)' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 65% 50%, rgba(212,175,55,0.14) 0%, transparent 65%)' }} />
         </div>

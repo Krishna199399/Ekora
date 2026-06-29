@@ -81,8 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const initNavbar = () => {
     const navbar = document.getElementById('navbar');
     const scrollTopBtn = document.getElementById('scrollTopBtn');
+    let ticking = false;
 
-    window.addEventListener('scroll', () => {
+    const updateNavbar = () => {
       const scrollY = window.scrollY;
 
       // Navbar background
@@ -98,7 +99,16 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         scrollTopBtn.classList.remove('visible');
       }
-    });
+
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateNavbar);
+        ticking = true;
+      }
+    }, { passive: true });
 
     // Scroll to top click
     scrollTopBtn.addEventListener('click', () => {
@@ -289,7 +299,6 @@ document.addEventListener('DOMContentLoaded', () => {
           phone: form.querySelector('[name="phone"], #phone').value,
           email: form.querySelector('[name="email"], #email').value,
           lookingFor: form.querySelector('[name="looking-for"], #looking-for').value,
-          stage: form.querySelector('[name="stage"], #stage').value,
           details: form.querySelector('[name="details"], #details').value
         };
 
@@ -304,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
             email: formData.email,
             phone: formData.phone,
             interest: formData.lookingFor,
-            message: `[Business Stage: ${formData.stage}] ${formData.details}`,
+            message: formData.details,
             formSource: 'contact'
           })
         })

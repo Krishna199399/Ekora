@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import Navbar from '../src/components/Navbar';
 import Footer from '../src/components/Footer';
+import OfficeMapSection from '../src/components/OfficeMapSection';
 import FooterReveal from '../src/components/FooterReveal';
 import { useConsultationModal } from '../src/context/ConsultationModalContext';
 import ConsultationModal from '../src/components/ConsultationModal';
@@ -94,6 +95,10 @@ export default function ClientWrapper({ children }) {
             {children}
           </motion.div>
         </AnimatePresence>
+
+        {!['/privacy', '/privacy/', '/terms-conditions', '/terms-conditions/', '/contact', '/contact/'].includes(pathname) && (
+          <OfficeMapSection />
+        )}
       </main>
 
       {/* ── Premium Footer with Reveal Animation ── */}

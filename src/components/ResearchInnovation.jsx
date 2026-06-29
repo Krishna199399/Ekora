@@ -274,7 +274,7 @@ export default function ResearchInnovation() {
             }}
           >
             <motion.img 
-              src="/rd_scientist.png" 
+              src="/advanced-rd-innovation.png" 
               alt="EGC R&D Scientist" 
               style={{ 
                 width: '100%', 
@@ -449,7 +449,7 @@ export default function ResearchInnovation() {
           style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '20px' }}
         >
           <img 
-            src="/rd_shelves.png"
+            src="/rd-innovation-ekora.png"
             alt="Where Science Creates Beauty" 
             style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', boxShadow: '0 8px 32px rgba(13,42,82,0.05)' }}
           />

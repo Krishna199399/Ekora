@@ -9,7 +9,7 @@ const FACTORY_DETAILS = {
   boutique: {
     title: 'Boutique R&D Plant',
     capacity: '5,000 - 10,000 bottles/day',
-    img: '/fac_boutique.png',
+    img: '/boutique-rd-plant.png',
     icon: <Wrench size={24} style={{ color: '#b5893b' }} />,
     specs: {
       area: '2,500 - 5,000 sq. ft.',
@@ -22,7 +22,7 @@ const FACTORY_DETAILS = {
   manufacturing: {
     title: 'Cosmetic Manufacturing Plant',
     capacity: '10,000 - 50,000 bottles/day',
-    img: '/fac_cosmetic.png',
+    img: '/cosmetic-manufacturing-plant-ekora.png',
     icon: <Factory size={24} style={{ color: '#b5893b' }} />,
     specs: {
       area: '10,000 - 25,000 sq. ft.',
@@ -35,7 +35,7 @@ const FACTORY_DETAILS = {
   industrial: {
     title: 'Global Industrial Plant',
     capacity: '50,000 - 100,000+ bottles/day',
-    img: '/fac_industrial.png',
+    img: '/ekora-industrial-project-ekora.png',
     icon: <Activity size={24} style={{ color: '#b5893b' }} />,
     specs: {
       area: '40,000 - 100,000+ sq. ft.',
@@ -48,7 +48,7 @@ const FACTORY_DETAILS = {
   turnkey: {
     title: 'Turnkey Project Execution',
     capacity: 'End-to-End Service',
-    img: '/fac_turnkey.png',
+    img: '/ekora-turnkey-projects.png',
     icon: <ClipboardList size={24} style={{ color: '#b5893b' }} />,
     specs: {
       area: 'Varies by plant scale.',
@@ -238,7 +238,7 @@ export default function FactorySetup() {
           className="fac-header-right"
         >
           <motion.img 
-            src="/ChatGPT Image Jun 1, 2026, 07_14_44 PM.png" 
+            src="/factory-blueprint-ekora.png" 
             alt="EGC Factory Setup Sterile Emulsifying Systems"
             style={{ 
               width: '100%', 

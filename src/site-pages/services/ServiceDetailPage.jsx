@@ -90,12 +90,12 @@ const IMAGE_REGISTRY = {
   'formulation_ingredient': '/formulation_ingredient.png',
   'formulation_prototype':  '/formulation_prototype.png',
   'formulation_commercial': '/formulation_commercial.png',
-  'fac_cosmetic':           '/fac_cosmetic.png',
-  'fac_industrial':         '/fac_industrial.png',
-  'fac_turnkey':            '/fac_turnkey.png',
-  'fac_boutique':           '/fac_boutique.png',
-  'rd_scientist':           '/rd_scientist.png',
-  'rd_shelves':             '/rd_shelves.png',
+  'fac_cosmetic':           '/cosmetic-manufacturing-plant-ekora.png',
+  'fac_industrial':         '/ekora-industrial-project-ekora.png',
+  'fac_turnkey':            '/ekora-turnkey-projects.png',
+  'fac_boutique':           '/boutique-rd-plant.png',
+  'rd_scientist':           '/advanced-rd-innovation.png',
+  'rd_shelves':             '/rd-innovation-ekora.png',
   'stability_accelerated':  '/stability_accelerated_study.png',
   'stability_container':    '/stability_container_compatibility.png',
   'stability_realtime':     '/stability_realtime_shelf.jpg',
@@ -162,85 +162,85 @@ async function loadImages() {
 
 /* ─── Per-service hero image map ────────────────────────────── */
 const HERO_IMGS = {
-  'cosmetic-research-product-formulation':            '/hero_cosmetic_research.png',
-  'cosmetic-manufacturing-consulting':                '/hero_manufacturing_consulting.png',
-  'plant-setup-factory-planning':                     '/hero_plant_setup.png',
-  'turnkey-cosmetic-project-solutions':               '/hero_turnkey_project.png',
-  'private-label-contract-manufacturing':             '/hero_private_label.png',
-  'regulatory-compliance-support':                    '/hero_regulatory_compliance.png',
-  'cosmetic-dpr-business-consulting':                 '/hero_dpr_business.png',
-  'technical-recruitment-team-building':              '/hero_recruitment.png',
-  'packaging-development-sourcing':                   '/hero_packaging.png',
-  'ingredient-sourcing-support':                      '/hero_ingredient_sourcing.png',
-  'branding-go-to-market-consulting':                 '/hero_branding_gtm.png',
-  'scale-up-commercialization-support':               '/hero_scale_up.png',
-  'export-documentation-support':                     '/hero_export_docs.png',
-  'cosmetic-stability-testing-shelf-life-validation': '/hero_stability_testing.png',
-  'cosmetic-innovation-rd-productivity-consulting':   '/hero_innovation_rd.png',
+  'cosmetic-research-product-formulation':            '/cosmetic-research-product-forumation.png',
+  'cosmetic-manufacturing-consulting':                '/cosmetic-manufacturing-consulting-services-ekora.png',
+  'plant-setup-factory-planning':                     '/cosmetic-industry-plant-setup.png',
+  'turnkey-cosmetic-project-solutions':               '/turnkey-cosmetic-manufacturing-project-ekora.png',
+  'private-label-contract-manufacturing':             '/cosmetic-private-label-contract-support.png',
+  'regulatory-compliance-support':                    '/regulatory-compliance-ekora.png',
+  'cosmetic-dpr-business-consulting':                 '/cosmetic-dpr-business-consulting-services-ekora.png',
+  'technical-recruitment-team-building':              '/cosmetic-industry-recruitment.png',
+  'packaging-development-sourcing':                   '/cosmetic-packaging-development-ekora.png',
+  'ingredient-sourcing-support':                      '/cosmetic-incredient-sourcing-services.png',
+  'branding-go-to-market-consulting':                 '/cosmetic-branding-gotomarket-ekora.png',
+  'scale-up-commercialization-support':               '/cosmetic-industry-scale-up-commercialization.png',
+  'export-documentation-support':                     '/cosmetic-export-documentation-services-ekora.png',
+  'cosmetic-stability-testing-shelf-life-validation': '/stability-testing-cosmetics.png',
+  'cosmetic-innovation-rd-productivity-consulting':   '/rd-innovation-cosmetic-ekora.png',
 };
 
 /* ─── Category image map ─────────────────────────────────────── */
 const CAT_IMGS = {
   'skincare':                '/service_skincare.png',
-  'haircare':                '/service_haircare.png',
+  'haircare':                '/cosmetic-haircare-manufacturing-ekora.png',
   'bodycare':                '/service_bodycare.png',
   'lipcare':                 '/service_lipcare.png',
   'physicalstability':       '/stability_physical.png',
   'chemicalstability':       '/stability_chemical.png',
   'functionalstability':     '/stability_functional.png',
   'packagingstability':      '/stability_packaging.png',
-  'skincareingredients':     '/ing_skincare.png',
-  'haircareingredients':     '/ing_haircare.png',
-  'bodycareingredients':     '/ing_bodycare.png',
-  'natural&herbalingredients':'/ing_natural.png',
-  'productionoptimization':  '/mfg_opt.png',
-  'gmp&compliance':          '/mfg_gmp_comp.png',
-  'qualitysystems':          '/mfg_qms.png',
+  'skincareingredients':     '/skincare-incredient-sourcing-ekora.png',
+  'haircareingredients':     '/cosmetic-hair-care-manufacturing-ekora.png',
+  'bodycareingredients':     '/skincare-formulation-ekora.png',
+  'natural&herbalingredients':'/natural-herbal-incredient-sourcing-ekora.png',
+  'productionoptimization':  '/cosmetic-production-optimization.png',
+  'gmp&compliance':          '/gmp-compliance-cosmetics.png',
+  'qualitysystems':          '/cosmetic-manufacturing-quality-systems.png',
   'equipment&scale-up':      '/mfg_scale.png',
-  'factoryfloorplanlayout':  '/plant_layout_card.png',
-  'cleanroomengineering':    '/plant_cleanroom.png',
-  'hvac&environmentalcontrol':'/plant_hvac.png',
-  'utility&infrastructure':  '/plant_utility_card.png',
-  'site&engineering':        '/turnkey_site.png',
-  'construction&approvals':  '/turnkey_const.png',
-  'equipment&installation':  '/turnkey_equip.png',
-  'validation&launch':       '/turnkey_val.png',
-  'partnerselection':        '/pl_partner.png',
-  'gmpaudits':               '/pl_audit.png',
-  'cost&moq':                '/pl_cost.png',
-  'quality&production':      '/pl_quality_card.png',
-  'marketregistration':      '/reg_market.png',
-  'documentation':           '/reg_docs_card.png',
-  'safety&claims':           '/reg_safety_card.png',
-  'risk&gapanalysis':        '/reg_risk.png',
-  'dprpreparation':          '/dpr_prep.png',
-  'financialanalysis':       '/dpr_finance_card.png',
-  'marketresearch':          '/dpr_market_card.png',
-  'fundingsupport':          '/dpr_funding.png',
-  'scientific&formulation':  '/recruit_scientific.png',
-  'manufacturing&operations':'/recruit_mfg.png',
-  'qa&regulatory':           '/recruit_qa.png',
-  'workforceplanning':       '/recruit_workforce.png',
-  'design&luxury':           '/pkg_design_card.png',
-  'sustainable&pcr':         '/pkg_sustain.png',
-  'compatibility&testing':   '/pkg_compat.png',
-  'cost&sourcing':           '/pkg_cost_card.png',
-  'brandstrategy':           '/brand_strat.png',
-  'portfolio&pricing':       '/brand_pricing.png',
-  'gtm&launch':              '/brand_gtm_card.png',
-  'distribution&global':     '/brand_dist.png',
-  'pilot&process':           '/scaleup_pilot_card.png',
-  'validation':              '/scaleup_val.png',
-  'yield&efficiency':        '/scaleup_yield.png',
-  'documentation&launch':    '/scaleup_docs.png',
-  'tradecertificates':       '/export_trade.png',
-  'safetydocumentation':     '/export_safety.png',
-  'labelingcompliance':      '/export_label.png',
-  'marketreadiness':         '/export_ready.png',
-  'speed':                   '/rd_speed.png',
-  'innovation':              '/rd_innov.png',
-  'efficiency':              '/rd_effic.png',
-  'scalability':             '/rd_scale.png',
+  'factoryfloorplanlayout':  '/factory-floorplan-layout.png',
+  'cleanroomengineering':    '/cosmetic-cleanroom-engineering.png',
+  'hvac&environmentalcontrol':'/hvac-environmental-control-cosmetics.png',
+  'utility&infrastructure':  '/utility-infrastructure-cosmetics.png',
+  'site&engineering':        '/cosmetic-turnkey-site-engineering.png',
+  'construction&approvals':  '/cosmetic-plan-construction-approval.png',
+  'equipment&installation':  '/cosmetic-industrial-equipment-installation.png',
+  'validation&launch':       '/cosmetic-plan-validation-launch.png',
+  'partnerselection':        '/cosmetic-partner-selection.png',
+  'gmpaudits':               '/cosmetic-good-manufacturing-practices-audit.png',
+  'cost&moq':                '/cosmetic-moq-negotiation.png',
+  'quality&production':      '/cosmetic-quality-production.png',
+  'marketregistration':      '/cosmetic-market-registration.png',
+  'documentation':           '/cosmetic-document-compliance.png',
+  'safety&claims':           '/cosmetic-safety-claims-ekora.png',
+  'risk&gapanalysis':        '/cosmetic-risk-gap-analysis.png',
+  'dprpreparation':          '/cosmetic-dpr-ekora.png',
+  'financialanalysis':       '/cosmetic-financial-analysis.png',
+  'marketresearch':          '/cosmetic-market-research-ekora.png',
+  'fundingsupport':          '/cosmetic-funding-support-ekora.png',
+  'scientific&formulation':  '/cosmetic-scientific-innovation.png',
+  'manufacturing&operations':'/recruit-manufacturing-operations-ekora.png',
+  'qa&regulatory':           '/quality-analysis-regulatory.png',
+  'workforceplanning':       '/workforce-planning-ekora.png',
+  'design&luxury':           '/cosmetic-luxury-package-design.png',
+  'sustainable&pcr':         '/post-consumer-recycled-material.png',
+  'compatibility&testing':   '/cosmetic-packaging-compatibility-testing.png',
+  'cost&sourcing':           '/cosmetic-packaging-cost-sourcing.png',
+  'brandstrategy':           '/cosmetic-brand-strategy-ekora.png',
+  'portfolio&pricing':       '/cosmetic-brand-porfolio-ekora.png',
+  'gtm&launch':              '/gtm-launch-ekora.png',
+  'distribution&global':     '/distribution-global-support-ekoraq.png',
+  'pilot&process':           '/cosmetic-production-pilot-scale.png',
+  'validation':              '/cosmetic-commercial-batch-validation.png',
+  'yield&efficiency':        '/cosmetic-yield-efficiency-ekora.png',
+  'documentation&launch':    '/cosmetic-documentation-launch.png',
+  'tradecertificates':       '/export-trade-certification.png',
+  'safetydocumentation':     '/cosmetic-export-safety.png',
+  'labelingcompliance':      '/cosmetic-export-labelling.png',
+  'marketreadiness':         '/export-ready-documentation-support-ekora.png',
+  'speed':                   '/cosmetic-rd-acceleration.png',
+  'innovation':              '/cosmetic-product-innovation.png',
+  'efficiency':              '/cosmetic-resource-utilization.png',
+  'scalability':             '/cosmetic-scalable-innovation.png',
 };
 const getCatImg = (title) => {
   if (!title) return null;
@@ -256,7 +256,7 @@ export default function ServiceDetailPage({ service }) {
   const relatedServices = getRelatedServices(service);
   const isLight = service.theme === 'light';
   const svcColor = service.color || GOLD2;
-  const heroImg = HERO_IMGS[service.slug] || '/hero_cosmetic_research.png';
+  const heroImg = HERO_IMGS[service.slug] || '/cosmetic-research-product-forumation.png';
 
   /* load lazy images once */
   useEffect(() => {
@@ -483,6 +483,59 @@ export default function ServiceDetailPage({ service }) {
               </div>
             </RevealBox>
           )}
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════
+          INTERNATIONAL STANDARDS STRIP
+      ══════════════════════════════════════════════════════════ */}
+      <section style={{ padding: '60px 0', background: CREAM, borderBottom: `1px solid rgba(181,137,59,0.1)` }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            style={{ textAlign: 'center', marginBottom: '40px' }}
+          >
+            <h2 style={{ fontFamily: 'Syne, var(--font-serif)', fontSize: 'clamp(20px, 2.5vw, 30px)', fontWeight: 700, color: '#0D2A52', margin: '0 0 12px', lineHeight: 1.2 }}>
+              Built on International Standards.{' '}
+              <span style={{ color: '#B5893B' }}>Trusted Across Markets.</span>
+            </h2>
+            <p style={{ fontSize: '14.5px', color: '#6b7280', lineHeight: 1.7, maxWidth: '620px', margin: '0 auto', fontStyle: 'italic' }}>
+              Our commitment to quality, compliance, sustainability, and ethical practices is reflected through globally recognized certification frameworks.
+            </p>
+          </motion.div>
+
+          {/* Marquee Row 1 — scrolls LEFT */}
+          <div className="cert-marquee-wrap" style={{ marginBottom: '16px' }}>
+            <div className="cert-marquee-track cert-scroll-left">
+              {[...Array(4)].map((_, set) => (
+                <div key={set} className="cert-marquee-set">
+                  {['/brand1.png','/brand2.png','/brand3.png','/brand4.png','/brand5.png','/brand6.png','/brand7.png'].map((src, i) => (
+                    <div key={i} className="cert-logo-card">
+                      <img src={src} alt={`Cert logo ${i + 1}`} style={{ maxWidth: '100%', maxHeight: '52px', objectFit: 'contain', display: 'block' }} />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Marquee Row 2 — scrolls RIGHT */}
+          <div className="cert-marquee-wrap">
+            <div className="cert-marquee-track cert-scroll-right">
+              {[...Array(4)].map((_, set) => (
+                <div key={set} className="cert-marquee-set">
+                  {['/brand8.png','/brand9.png','/brand10.png','/brand11.png','/brand12.png','/brand13.png','/brand14.png'].map((src, i) => (
+                    <div key={i} className="cert-logo-card">
+                      <img src={src} alt={`Cert logo ${i + 8}`} style={{ maxWidth: '100%', maxHeight: '52px', objectFit: 'contain', display: 'block' }} />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

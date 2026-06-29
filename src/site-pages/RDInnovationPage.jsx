@@ -733,6 +733,59 @@ export default function RDInnovationPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════
+          INTERNATIONAL STANDARDS STRIP
+      ══════════════════════════════════════════════════ */}
+      <section style={{ padding: '60px 0', background: CREAM }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            style={{ textAlign: 'center', marginBottom: '40px' }}
+          >
+            <h2 style={{ fontFamily: 'Syne, var(--font-serif)', fontSize: 'clamp(20px, 2.5vw, 30px)', fontWeight: 700, color: '#0D2A52', margin: '0 0 12px', lineHeight: 1.2 }}>
+              Built on International Standards.{' '}
+              <span style={{ color: '#B5893B' }}>Trusted Across Markets.</span>
+            </h2>
+            <p style={{ fontSize: '14.5px', color: '#6b7280', lineHeight: 1.7, maxWidth: '620px', margin: '0 auto', fontStyle: 'italic' }}>
+              Our commitment to quality, compliance, sustainability, and ethical practices is reflected through globally recognized certification frameworks.
+            </p>
+          </motion.div>
+
+          {/* Marquee Row 1 — scrolls LEFT */}
+          <div className="cert-marquee-wrap" style={{ marginBottom: '16px' }}>
+            <div className="cert-marquee-track cert-scroll-left">
+              {[...Array(4)].map((_, set) => (
+                <div key={set} className="cert-marquee-set">
+                  {['/brand1.png','/brand2.png','/brand3.png','/brand4.png','/brand5.png','/brand6.png','/brand7.png'].map((src, i) => (
+                    <div key={i} className="cert-logo-card">
+                      <img src={src} alt={`Cert logo ${i + 1}`} style={{ maxWidth: '100%', maxHeight: '52px', objectFit: 'contain', display: 'block' }} />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Marquee Row 2 — scrolls RIGHT */}
+          <div className="cert-marquee-wrap">
+            <div className="cert-marquee-track cert-scroll-right">
+              {[...Array(4)].map((_, set) => (
+                <div key={set} className="cert-marquee-set">
+                  {['/brand8.png','/brand9.png','/brand10.png','/brand11.png','/brand12.png','/brand13.png','/brand14.png'].map((src, i) => (
+                    <div key={i} className="cert-logo-card">
+                      <img src={src} alt={`Cert logo ${i + 8}`} style={{ maxWidth: '100%', maxHeight: '52px', objectFit: 'contain', display: 'block' }} />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════
           4. EVOLUTION OF COSMETIC INNOVATION
       ══════════════════════════════════════════════════ */}
       <section style={{ padding: '72px 0', background: WHITE }}>
@@ -1343,6 +1396,61 @@ export default function RDInnovationPage() {
         @keyframes rdiFloatB {
           0%, 100% { transform: translateY(0px); }
           50%       { transform: translateY(-14px); }
+        }
+
+        /* ── Marquee ── */
+        @keyframes certScrollLeft {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-25%); }
+        }
+        @keyframes certScrollRight {
+          0%   { transform: translateX(-25%); }
+          100% { transform: translateX(0); }
+        }
+
+        .cert-marquee-wrap {
+          overflow: hidden;
+          position: relative;
+          mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+          -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+        }
+
+        .cert-marquee-track { display: flex; width: max-content; }
+
+        .cert-scroll-left  { animation: certScrollLeft  28s linear infinite; }
+        .cert-scroll-right { animation: certScrollRight 28s linear infinite; }
+
+        .cert-marquee-wrap:hover .cert-marquee-track {
+          animation-play-state: paused;
+        }
+
+        .cert-marquee-set {
+          display: flex;
+          gap: 16px;
+          padding-right: 16px;
+          flex-shrink: 0;
+        }
+
+        .cert-logo-card {
+          background: #fff;
+          border: 1px solid rgba(181,137,59,0.15);
+          border-radius: 12px;
+          padding: 14px 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 2px 10px rgba(13,42,82,0.04);
+          height: 80px;
+          min-width: 110px;
+          flex-shrink: 0;
+          transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+          cursor: default;
+        }
+
+        .cert-logo-card:hover {
+          border-color: rgba(181,137,59,0.45);
+          box-shadow: 0 6px 20px rgba(181,137,59,0.12);
+          transform: translateY(-3px);
         }
         @keyframes rdiSpin {
           from { transform: rotate(0deg); }

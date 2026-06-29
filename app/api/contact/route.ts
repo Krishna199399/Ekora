@@ -92,7 +92,7 @@ function createTransporter() {
 }
 
 // ─── Email Templates ──────────────────────────────────────
-function buildAdminEmail(data: ContactFormData): { subject: string; html: string } {
+function buildAdminEmail(data: ContactFormData, referer: string): { subject: string; html: string } {
   const name    = sanitize(data.name || data.fullName || 'Unknown');
   const email   = sanitize(data.email);
   const phone   = sanitize(data.phone || '—');
@@ -100,10 +100,19 @@ function buildAdminEmail(data: ContactFormData): { subject: string; html: string
   const subject = sanitize(data.subject || data.service || data.interest || 'General Inquiry');
   const country = sanitize(data.country || '—');
   const message = sanitize(data.message || '—');
-  const source  = data.formSource === 'modal' ? 'Consultation Popup' : 'Contact Page Form';
+  
+  let source = 'Main Website - Contact Form';
+  if (referer.includes('/ads/') || referer.includes('/ads')) {
+    source = 'Ads Landing Page';
+  } else if (data.formSource === 'modal') {
+    source = 'Main Website - Consultation Popup';
+  } else if (referer.includes('/contact/') || referer.includes('/contact')) {
+    source = 'Main Website - Contact Page';
+  }
+  
   const ts      = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
 
-  const emailSubject = `🔔 New Lead: ${name} — ${subject}`;
+  const emailSubject = `🔔 New Lead [${source}]: ${name} — ${subject}`;
 
   const html = `<!DOCTYPE html>
 <html lang="en">
@@ -168,7 +177,8 @@ function buildAdminEmail(data: ContactFormData): { subject: string; html: string
               <td style="padding-top:24px;">
                 <table width="100%" cellpadding="0" cellspacing="0">
                   ${row('🕐 Submitted At', ts + ' IST')}
-                  ${row('📂 Form Source', source)}
+                  ${row('📂 Lead Source', source)}
+                  ${row('🔗 Referral URL', referer ? `<a href="${referer}" style="color:#0D2A52;text-decoration:none;">${referer}</a>` : '—')}
                 </table>
               </td>
             </tr>
@@ -361,6 +371,7 @@ export async function POST(req: NextRequest) {
   // Get client IP for rate limiting
   const forwarded = req.headers.get('x-forwarded-for');
   const ip = forwarded ? forwarded.split(',')[0].trim() : 'unknown';
+  const referer = req.headers.get('referer') || '';
 
   // Rate limit check
   if (isRateLimited(ip)) {
@@ -413,7 +424,7 @@ export async function POST(req: NextRequest) {
     const contactEmail = process.env.CONTACT_EMAIL || process.env.SMTP_USER;
     const senderEmail  = process.env.SMTP_USER!;
 
-    const { subject: adminSubject, html: adminHtml } = buildAdminEmail(body);
+    const { subject: adminSubject, html: adminHtml } = buildAdminEmail(body, referer);
     const { subject: replySubject, html: replyHtml  } = buildAutoReply(body);
 
     // Send both emails in parallel

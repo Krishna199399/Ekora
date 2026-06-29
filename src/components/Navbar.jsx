@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, ChevronDown, Phone } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronDown, Phone, Mail } from 'lucide-react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { SERVICES_DATA } from '../data/servicesData';
@@ -117,10 +117,62 @@ export default function Navbar() {
   return (
     <>
       {/* ═══════════════════════════════════════════════════
+          TOP INFO BAR
+      ═══════════════════════════════════════════════════ */}
+      <div style={{
+        position: 'fixed', top: 0, left: 0, right: 0,
+        height: '36px',
+        background: 'linear-gradient(90deg, #0D2A52 0%, #0a2244 100%)',
+        display: 'flex', alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '0 40px',
+        zIndex: 301,
+        borderBottom: '1px solid rgba(181,137,59,0.2)',
+      }} className="nb-topbar">
+        {/* Left: Email + Phone */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+          <a href="mailto:info@ekoraglobalconsulting.com" style={{
+            display: 'flex', alignItems: 'center', gap: '6px',
+            fontSize: '11.5px', fontWeight: 500,
+            color: 'rgba(255,255,255,0.82)',
+            textDecoration: 'none',
+            fontFamily: 'var(--font-sans)',
+            letterSpacing: '0.2px',
+            transition: 'color 0.2s',
+          }} className="nb-topbar-link">
+            <Mail size={11} style={{ color: '#b5893b', flexShrink: 0 }} />
+            info@ekoraglobalconsulting.com
+          </a>
+          <a href="tel:+917892978516" style={{
+            display: 'flex', alignItems: 'center', gap: '6px',
+            fontSize: '11.5px', fontWeight: 500,
+            color: 'rgba(255,255,255,0.82)',
+            textDecoration: 'none',
+            fontFamily: 'var(--font-sans)',
+            letterSpacing: '0.2px',
+            transition: 'color 0.2s',
+          }} className="nb-topbar-link">
+            <Phone size={11} style={{ color: '#b5893b', flexShrink: 0 }} />
+            +91 78929 78516
+          </a>
+        </div>
+
+        {/* Right: Tagline */}
+        <div style={{
+          fontSize: '10.5px', fontWeight: 600,
+          color: 'rgba(181,137,59,0.85)',
+          letterSpacing: '1.8px', textTransform: 'uppercase',
+          fontFamily: 'var(--font-sans)',
+        }} className="nb-topbar-right">
+          India · Cosmetic Consulting
+        </div>
+      </div>
+
+      {/* ═══════════════════════════════════════════════════
           NAVBAR BAR
       ═══════════════════════════════════════════════════ */}
       <nav style={{
-        position: 'fixed', top: 0, left: 0, right: 0,
+        position: 'fixed', top: '36px', left: 0, right: 0,
         height: '76px',
         background: scrolled
           ? 'rgba(255,255,255,0.97)'
@@ -138,7 +190,7 @@ export default function Navbar() {
 
         {/* ── Logo ── */}
         <div onClick={() => handleNavClick('home')} style={{ display: 'flex', cursor: 'pointer', flexShrink: 0 }}>
-          <img src="/logo_black.png" alt="EGC Logo" style={{ height: '56px', width: 'auto', display: 'block', transition: 'opacity 0.2s' }} />
+          <img src="/ekora-global-consulting-logo-black.png" alt="EGC Logo" style={{ height: '56px', width: 'auto', display: 'block', transition: 'opacity 0.2s' }} />
         </div>
 
         {/* ── Desktop nav links ── */}
@@ -416,7 +468,7 @@ export default function Navbar() {
         /* ── Mega panel ── */
         .nb-mega-panel {
           position: fixed;
-          top: 76px;
+          top: 112px;
           left: 0; right: 0;
           z-index: 299;
           background: rgba(255,255,255,0.99);
@@ -493,7 +545,7 @@ export default function Navbar() {
         .nb-mega-backdrop {
           position: fixed;
           inset: 0;
-          top: 76px;
+          top: 112px;
           z-index: 298;
           background: transparent;
         }
@@ -508,7 +560,7 @@ export default function Navbar() {
         /* ── Mobile drawer ── */
         .nb-mobile-drawer {
           position: fixed;
-          top: 76px; left: 0; right: 0;
+          top: 112px; left: 0; right: 0;
           background: #ffffff;
           border-bottom: 1px solid rgba(181,137,59,0.15);
           padding: 20px 24px 28px;
@@ -516,7 +568,7 @@ export default function Navbar() {
           flex-direction: column;
           gap: 2px;
           z-index: 299;
-          max-height: calc(100vh - 76px);
+          max-height: calc(100vh - 112px);
           overflow-y: auto;
           box-shadow: 0 12px 40px rgba(27,11,48,0.12);
           animation: nbDrawerIn 0.25s cubic-bezier(0.4,0,0.2,1);
@@ -565,6 +617,12 @@ export default function Navbar() {
           padding-left: 16px;
         }
 
+        /* ── Top info bar responsive ── */
+        .nb-topbar-link:hover { color: #ffffff !important; }
+        @media (max-width: 640px) {
+          .nb-topbar { padding: 0 16px !important; }
+          .nb-topbar-right { display: none !important; }
+        }
         @media (max-width: 480px) {
           nav { padding: 0 16px !important; }
           .nb-mobile-drawer { padding: 16px 16px 24px; }

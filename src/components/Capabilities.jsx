@@ -11,7 +11,7 @@ const CAPABILITIES = [
     id: 'rnd',
     num: '01',
     title: 'Cosmetic R&D & Formulation',
-    img: '/photo_2026-05-30_02-33-38.jpg',
+    img: '/cosmetic-rd-formulation.png',
     icon: FlaskConical,
     accentColor: '#8a6bbd',
     tag: 'Science-Led',
@@ -32,7 +32,7 @@ const CAPABILITIES = [
     id: 'setup',
     num: '02',
     title: 'Plant Setup & Factory Planning',
-    img: '/photo_2026-05-30_02-23-41.jpg',
+    img: '/plant-setup-factor-planning-ekora.png',
     icon: Building,
     accentColor: '#B5893B',
     tag: 'GMP-Ready',
@@ -53,7 +53,7 @@ const CAPABILITIES = [
     id: 'turnkey',
     num: '03',
     title: 'Turnkey Project Solutions',
-    img: '/photo_2026-05-30_02-23-54.jpg',
+    img: '/end-to-end-turnkey-project-solution-ekora.png',
     icon: Compass,
     accentColor: '#0D2A52',
     tag: 'End-to-End',
@@ -74,7 +74,7 @@ const CAPABILITIES = [
     id: 'compliance',
     num: '04',
     title: 'Regulatory & FDA Compliance',
-    img: '/photo_2026-05-30_02-24-14.jpg',
+    img: '/regulatory-fda-compliance.png',
     icon: FileText,
     accentColor: '#D4AF37',
     tag: 'FDA Ready',
@@ -230,7 +230,7 @@ export default function Capabilities() {
           className="cap-header-right"
         >
           <motion.img 
-            src="/services_hero.png" 
+            src="/cosmetic-advisory-ekora.png" 
             alt="EGC Capabilities Dropper Laboratory"
             style={{ 
               width: '100%', 
