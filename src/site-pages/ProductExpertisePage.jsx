@@ -32,7 +32,7 @@ const CATEGORIES = [
       'Skincare remains one of the largest and fastest-evolving categories within the global beauty industry. Consumers increasingly seek products that combine efficacy, ingredient transparency, sensory appeal, and long-term skin health benefits.',
       'We support the development of skincare products designed for hydration, cleansing, protection, anti-aging, barrier repair, brightening, and targeted treatment applications.'
     ],
-    img: '/pe_skincare-products-manufacturing-ekora.png',
+    img: '/skincare-products-manufacturing-ekora.png',
     products: ['Face Wash', 'Serum', 'Moisturizer', 'Sunscreen', 'Face Mask', 'Toner'],
     badge: 'Most Popular',
   },
@@ -352,7 +352,7 @@ function SectionBadge({ children }) {
 /* ─── Hero Floating Collage ────────────────────────────────────── */
 function HeroCollage() {
   const collageItems = [
-    { img: '/pe_skincare-products-manufacturing-ekora.png',  top: '4%',  left: '8%',  size: 195, rot: '-5deg', dur: 3.8, delay: '0s',    z: 3 },
+    { img: '/skincare-products-manufacturing-ekora.png',  top: '4%',  left: '8%',  size: 195, rot: '-5deg', dur: 3.8, delay: '0s',    z: 3 },
     { img: '/fragrance-product-manufacturing-ekora.png', top: '0%',  left: '52%', size: 170, rot:  '6deg', dur: 4.1, delay: '0.4s',  z: 4 },
     { img: '/luxury-cosmetics-manufacturing.png',    top: '30%', left: '30%', size: 205, rot:  '0deg', dur: 3.5, delay: '0.7s',  z: 5 },
     { img: '/color-cosmetics-manufacturing-ekora.png',     top: '58%', left: '6%',  size: 162, rot: '-4deg', dur: 4.4, delay: '0.2s',  z: 3 },

@@ -94,7 +94,7 @@ const IMAGE_REGISTRY = {
   'fac_industrial':         '/ekora-industrial-project-ekora.png',
   'fac_turnkey':            '/ekora-turnkey-projects.png',
   'fac_boutique':           '/boutique-rd-plant.png',
-  'rd_scientist':           '/advanced-rd-innovation.png',
+  'rd_scientist':           '/cosmetic-rd-lab-researcher.png',
   'rd_shelves':             '/rd-innovation-ekora.png',
   'stability_accelerated':  '/stability_accelerated_study.png',
   'stability_container':    '/stability_container_compatibility.png',

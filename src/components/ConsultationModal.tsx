@@ -30,12 +30,31 @@ const consultationSchema = z.object({
 
 type ConsultationFormValues = z.infer<typeof consultationSchema>;
 
+const DIAL_CODES = [
+  { code: '+91',  flag: '🇮🇳', label: 'IN' },
+  { code: '+1',   flag: '🇺🇸', label: 'US' },
+  { code: '+44',  flag: '🇬🇧', label: 'UK' },
+  { code: '+971', flag: '🇦🇪', label: 'AE' },
+  { code: '+966', flag: '🇸🇦', label: 'SA' },
+  { code: '+65',  flag: '🇸🇬', label: 'SG' },
+  { code: '+27',  flag: '🇿🇦', label: 'ZA' },
+  { code: '+61',  flag: '🇦🇺', label: 'AU' },
+  { code: '+49',  flag: '🇩🇪', label: 'DE' },
+  { code: '+33',  flag: '🇫🇷', label: 'FR' },
+  { code: '+86',  flag: '🇨🇳', label: 'CN' },
+  { code: '+81',  flag: '🇯🇵', label: 'JP' },
+  { code: '+55',  flag: '🇧🇷', label: 'BR' },
+  { code: '+52',  flag: '🇲🇽', label: 'MX' },
+  { code: '+60',  flag: '🇲🇾', label: 'MY' },
+];
+
 export default function ConsultationModal() {
   const { isOpen, closeModal, triggerSource } = useConsultationModal();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [dialCode, setDialCode] = useState('+91');
   
   const dropdownRef = useRef<HTMLDivElement>(null);
   const modalContentRef = useRef<HTMLDivElement>(null);
@@ -139,7 +158,7 @@ export default function ConsultationModal() {
           fullName: data.fullName,
           name: data.fullName,
           email: data.email,
-          phone: data.phone,
+          phone: data.phone ? `${dialCode} ${data.phone}` : '',
           companyName: data.companyName,
           company: data.companyName,
           service: data.service,
@@ -177,6 +196,7 @@ export default function ConsultationModal() {
     setIsSuccess(false);
     setSubmitError('');
     setIsDropdownOpen(false);
+    setDialCode('+91');
   };
 
   const handleClose = () => {
@@ -284,23 +304,54 @@ export default function ConsultationModal() {
                       </div>
 
                       {/* Phone */}
-                      <div className="luxury-input-group">
-                        <input
-                          id="phone"
-                          type="tel"
-                          className={`luxury-input ${errors.phone ? 'error' : ''} ${watch('phone') ? 'has-value' : ''}`}
-                          {...register('phone')}
-                          placeholder=" "
-                          disabled={isSubmitting}
-                        />
-                        <label htmlFor="phone" className="luxury-label">
-                          Phone Number <span className="text-gold">*</span>
-                        </label>
+                      <div className="luxury-input-group" style={{ borderBottom: 'none' }}>
+                        <div style={{
+                          display: 'flex',
+                          alignItems: 'stretch',
+                          border: `1px solid ${errors.phone ? 'rgba(255,107,107,0.5)' : 'rgba(255,255,255,0.12)'}`,
+                          borderRadius: '6px',
+                          overflow: 'hidden',
+                          transition: 'border-color 0.3s ease',
+                        }}>
+                          <select
+                            value={dialCode}
+                            onChange={(e) => setDialCode(e.target.value)}
+                            disabled={isSubmitting}
+                            style={{
+                              flexShrink: 0,
+                              width: '82px',
+                              padding: '10px 4px',
+                              border: 'none',
+                              borderRight: '1px solid rgba(255,255,255,0.1)',
+                              background: 'rgba(255,255,255,0.05)',
+                              color: '#e5d7bc',
+                              fontSize: '12px',
+                              fontWeight: 600,
+                              outline: 'none',
+                              cursor: 'pointer',
+                            }}
+                          >
+                            {DIAL_CODES.map((d) => (
+                              <option key={d.code} value={d.code} style={{ background: '#140824', color: '#fff' }}>
+                                {d.flag} {d.code}
+                              </option>
+                            ))}
+                          </select>
+                          <input
+                            id="phone"
+                            type="tel"
+                            className={`luxury-input ${errors.phone ? 'error' : ''} ${watch('phone') ? 'has-value' : ''}`}
+                            {...register('phone')}
+                            placeholder="Phone Number *"
+                            disabled={isSubmitting}
+                            style={{ flex: 1, minWidth: 0, paddingLeft: '10px' }}
+                          />
+                        </div>
                         {errors.phone && (
-                          <span className="luxury-error-message">{errors.phone.message}</span>
+                          <span className="luxury-error-message" style={{ position: 'static', marginTop: '4px' }}>{errors.phone.message}</span>
                         )}
-                        {!errors.phone && touchedFields.phone && watch('phone') && (
-                          <Check className="luxury-success-icon" />
+                        {!errors.phone && watch('phone') && (
+                          <Check style={{ position: 'absolute', right: 4, bottom: 6, width: 14, height: 14, color: '#25d366' }} />
                         )}
                       </div>
 

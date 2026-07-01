@@ -18,6 +18,24 @@ const RESPONSES = [
 ];
 
 export default function ContactForm() {
+  const DIAL_CODES = [
+    { code: '+91',  flag: '🇮🇳', label: 'IN' },
+    { code: '+1',   flag: '🇺🇸', label: 'US' },
+    { code: '+44',  flag: '🇬🇧', label: 'UK' },
+    { code: '+971', flag: '🇦🇪', label: 'AE' },
+    { code: '+966', flag: '🇸🇦', label: 'SA' },
+    { code: '+65',  flag: '🇸🇬', label: 'SG' },
+    { code: '+27',  flag: '🇿🇦', label: 'ZA' },
+    { code: '+61',  flag: '🇦🇺', label: 'AU' },
+    { code: '+49',  flag: '🇩🇪', label: 'DE' },
+    { code: '+33',  flag: '🇫🇷', label: 'FR' },
+    { code: '+86',  flag: '🇨🇳', label: 'CN' },
+    { code: '+81',  flag: '🇯🇵', label: 'JP' },
+    { code: '+55',  flag: '🇧🇷', label: 'BR' },
+    { code: '+52',  flag: '🇲🇽', label: 'MX' },
+    { code: '+60',  flag: '🇲🇾', label: 'MY' },
+  ];
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,6 +45,7 @@ export default function ContactForm() {
     interest: '',
     project: ''
   });
+  const [dialCode, setDialCode] = useState('+91');
 
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -80,7 +99,7 @@ export default function ContactForm() {
           formSource: 'contact',
           name: formData.name,
           email: formData.email,
-          phone: formData.phone,
+          phone: formData.phone ? `${dialCode} ${formData.phone}` : '',
           company: formData.company,
           country: formData.country,
           interest: formData.interest,
@@ -103,6 +122,7 @@ export default function ContactForm() {
 
   const handleReset = () => {
     setFormData({ name: '', email: '', company: '', phone: '', country: '', interest: '', project: '' });
+    setDialCode('+91');
     setFormErrors({});
     setIsSubmitted(false);
     setSubmitError('');
@@ -242,23 +262,44 @@ export default function ContactForm() {
                   <Building size={16} style={{ position: 'absolute', left: '12px', top: '15px', color: '#7c728a' }} />
                   {formErrors.company && <span style={{ fontSize: '10px', color: '#c62828', display: 'block', marginTop: '3px' }}>{formErrors.company}</span>}
                 </div>
-                <div style={{ position: 'relative' }}>
+                {/* Phone with dial-code selector */}
+                <div style={{ display: 'flex', border: '1px solid #e2dfd8', borderRadius: '6px', overflow: 'hidden' }}>
+                  <select
+                    value={dialCode}
+                    onChange={(e) => setDialCode(e.target.value)}
+                    style={{
+                      flexShrink: 0,
+                      width: '78px',
+                      padding: '12px 4px',
+                      border: 'none',
+                      borderRight: '1px solid #e2dfd8',
+                      background: '#f7f6f2',
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      color: '#0D2A52',
+                      outline: 'none',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    {DIAL_CODES.map((d) => (
+                      <option key={d.code} value={d.code}>{d.flag} {d.code}</option>
+                    ))}
+                  </select>
                   <input
-                    type="text"
+                    type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
                     style={{
-                      width: '100%',
-                      padding: '12px 12px 12px 35px',
-                      border: '1px solid #e2dfd8',
-                      borderRadius: '6px',
+                      flex: 1,
+                      padding: '12px 10px',
+                      border: 'none',
                       fontSize: '14px',
-                      outline: 'none'
+                      outline: 'none',
+                      minWidth: 0,
                     }}
                     placeholder="Phone Number"
                   />
-                  <Phone size={16} style={{ position: 'absolute', left: '12px', top: '15px', color: '#7c728a' }} />
                 </div>
               </div>
 
@@ -394,33 +435,7 @@ export default function ContactForm() {
           </div>
         </div>
 
-        {/* Contact Details */}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'row',
-          gap: '32px',
-          flexWrap: 'wrap',
-          padding: '24px',
-          background: 'white',
-          border: '1px solid #e2dfd8',
-          borderRadius: '12px',
-          boxShadow: '0 4px 12px rgba(27,11,48,0.03)',
-          alignItems: 'center'
-        }}>
-          <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '700', color: '#0D2A52', flexShrink: 0 }}>Contact Us Directly</h4>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: '#5c526b' }}>
-            <Mail size={16} style={{ color: '#b5893b', flexShrink: 0 }} />
-            <a href="mailto:info@ekoraglobalconsulting.com" style={{ color: '#5c526b', textDecoration: 'none' }}>info@ekoraglobalconsulting.com</a>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: '#5c526b' }}>
-            <Phone size={16} style={{ color: '#b5893b', flexShrink: 0 }} />
-            <a href="tel:+917892978516" style={{ color: '#5c526b', textDecoration: 'none' }}>+91 78929 78516</a>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: '#5c526b' }}>
-            <Globe size={16} style={{ color: '#b5893b', flexShrink: 0 }} />
-            <span>No. 39/3, Richmond Road, Bengaluru</span>
-          </div>
-        </div>
+
 
         {/* Bottom response time info row */}
         <div style={{
