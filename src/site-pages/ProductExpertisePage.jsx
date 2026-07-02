@@ -352,12 +352,12 @@ function SectionBadge({ children }) {
 /* ─── Hero Floating Collage ────────────────────────────────────── */
 function HeroCollage() {
   const collageItems = [
-    { img: '/skincare-products-manufacturing-ekora.png',  top: '4%',  left: '8%',  size: 195, rot: '-5deg', dur: 3.8, delay: '0s',    z: 3 },
-    { img: '/fragrance-product-manufacturing-ekora.png', top: '0%',  left: '52%', size: 170, rot:  '6deg', dur: 4.1, delay: '0.4s',  z: 4 },
-    { img: '/luxury-cosmetics-manufacturing.png',    top: '30%', left: '30%', size: 205, rot:  '0deg', dur: 3.5, delay: '0.7s',  z: 5 },
-    { img: '/color-cosmetics-manufacturing-ekora.png',     top: '58%', left: '6%',  size: 162, rot: '-4deg', dur: 4.4, delay: '0.2s',  z: 3 },
-    { img: '/haircare-products-manufacturing-ekora.png',  top: '60%', left: '55%', size: 155, rot:  '5deg', dur: 3.9, delay: '0.6s',  z: 3 },
-    { img: '/wellness-product-manufacturing-ekora.png',  top: '20%', left: '-3%', size: 125, rot: '-7deg', dur: 4.2, delay: '0.9s',  z: 2 },
+    { img: '/skincare-products-manufacturing-ekora.png',  top: '4%',  left: '8%',  size: 195, rot: '-5deg', dur: 3.8, delay: '0s',    z: 3, alt: 'Skincare products formulation and manufacturing' },
+    { img: '/fragrance-product-manufacturing-ekora.png', top: '0%',  left: '52%', size: 170, rot:  '6deg', dur: 4.1, delay: '0.4s',  z: 4, alt: 'Fragrance and perfume products formulation' },
+    { img: '/luxury-cosmetics-manufacturing.png',    top: '30%', left: '30%', size: 205, rot:  '0deg', dur: 3.5, delay: '0.7s',  z: 5, alt: 'Luxury cosmetic products research' },
+    { img: '/color-cosmetics-manufacturing-ekora.png',     top: '58%', left: '6%',  size: 162, rot: '-4deg', dur: 4.4, delay: '0.2s',  z: 3, alt: 'Color cosmetics and makeup manufacturing' },
+    { img: '/haircare-products-manufacturing-ekora.png',  top: '60%', left: '55%', size: 155, rot:  '5deg', dur: 3.9, delay: '0.6s',  z: 3, alt: 'Haircare products formulation development' },
+    { img: '/wellness-product-manufacturing-ekora.png',  top: '20%', left: '-3%', size: 125, rot: '-7deg', dur: 4.2, delay: '0.9s',  z: 2, alt: 'Wellness beauty products scale up' },
   ];
 
   return (
@@ -396,7 +396,7 @@ function HeroCollage() {
               animation: `peFloat ${item.dur}s ease-in-out infinite alternate`,
               animationDelay: item.delay,
             }}>
-              <img src={item.img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={item.img} alt={item.alt} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               <div style={{
                 position: 'absolute', inset: 0,
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 55%)',
@@ -1059,7 +1059,7 @@ export default function ProductExpertisePage() {
       >
         {/* Background */}
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/cosmetic-formulation-product-categories.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.16 }} />
+          <img src="/cosmetic-formulation-product-categories.png" alt="Cosmetic formulation product categories collage" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.16 }} />
           <div style={{
             position: 'absolute', inset: 0,
             background: `linear-gradient(135deg, ${NAVY} 0%, rgba(13,42,82,0.92) 60%, rgba(13,42,82,0.75) 100%)`,
@@ -1711,7 +1711,7 @@ export default function ProductExpertisePage() {
         style={{ position: 'relative', overflow: 'hidden', minHeight: '580px', display: 'flex', alignItems: 'center' }}
       >
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/cosmetic-formulation-product-categories.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src="/cosmetic-formulation-product-categories.png" alt="EGC cosmetic formulation and product development" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(13,42,82,0.96) 0%, rgba(13,42,82,0.88) 55%, rgba(10,30,60,0.93) 100%)' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 65% 50%, rgba(212,175,55,0.14) 0%, transparent 65%)' }} />
         </div>

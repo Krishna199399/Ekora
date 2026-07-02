@@ -1,23 +1,23 @@
 import AboutPage from '../../src/site-pages/AboutPage';
 
 export const metadata = {
-  title: 'About EGC Ekora Global Consulting | Cosmetic Industrial Consultants',
+  title: 'About EGC Ekora Global Consulting | Cosmetic Business Consultants',
   description:
-    'Learn about EGC Ekora Global Consulting, a cosmetic industrial consulting company supporting product development, manufacturing, factory setup, compliance, and growth strategies for beauty businesses worldwide.',
+    'Discover EGC Ekora Global Consulting, a leading cosmetic business consulting firm delivering expert advisory in formulation, manufacturing, compliance, plant setup, and brand commercialization.',
   alternates: {
     canonical: 'https://www.ekoraglobalconsulting.com/about/',
   },
   openGraph: {
-    title: 'About EGC Ekora Global Consulting | Cosmetic Industrial Consultants',
-    description: 'Learn about EGC Ekora Global Consulting, a cosmetic industrial consulting company supporting product development, manufacturing, factory setup, compliance, and growth strategies for beauty businesses worldwide.',
+    title: 'About EGC Ekora Global Consulting | Cosmetic Business Consultants',
+    description: 'Discover EGC Ekora Global Consulting, a leading cosmetic business consulting firm delivering expert advisory in formulation, manufacturing, compliance, plant setup, and brand commercialization.',
     url: 'https://www.ekoraglobalconsulting.com/about/',
     siteName: 'EGC Ekora Global Consulting',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About EGC Ekora Global Consulting | Cosmetic Industrial Consultants',
-    description: 'Learn about EGC Ekora Global Consulting, a cosmetic industrial consulting company supporting product development, manufacturing, factory setup, compliance, and growth strategies for beauty businesses worldwide.',
+    title: 'About EGC Ekora Global Consulting | Cosmetic Business Consultants',
+    description: 'Discover EGC Ekora Global Consulting, a leading cosmetic business consulting firm delivering expert advisory in formulation, manufacturing, compliance, plant setup, and brand commercialization.',
   },
 };
 

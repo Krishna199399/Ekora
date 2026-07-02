@@ -1778,3 +1778,49 @@ ul { list-style: none; }
   .hero-title { font-size: 20px; }
   .hero-badge { font-size: 9px; padding: 6px 12px; }
 }
+
+/* --- Phone Input with Dial Code --- */
+.phone-input-wrapper {
+  display: flex;
+  align-items: stretch;
+  border: 1.5px solid #d0d5dd;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: #fff;
+}
+.phone-input-wrapper:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(197,168,128,0.18);
+}
+.dial-code-select {
+  flex-shrink: 0;
+  width: 86px;
+  padding: 0 6px;
+  border: none;
+  border-right: 1.5px solid #d0d5dd;
+  background: #f7f9fc;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  color: var(--navy);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  text-align: center;
+}
+.phone-input-wrapper input[type="tel"] {
+  flex: 1;
+  min-width: 0;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: transparent;
+  outline: none;
+}
+

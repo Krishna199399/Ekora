@@ -1,9 +1,9 @@
 import ServicesPage from '../../src/site-pages/ServicesPage';
 
 export const metadata = {
-  title: 'Services | Ekora Global Consulting — Cosmetic Formulation & Factory Architecture',
+  title: 'Cosmetic Consulting Services | EGC Ekora Global Consulting',
   description:
-    "Explore EGC's consulting services: cosmetic formulation R&D, factory blueprinting and architecture, GMP & regulatory compliance, and brand scale up strategies.",
+    "Explore EGC's cosmetic consulting services, including formulation R&D, factory planning, GMP compliance, manufacturing, and brand growth strategies.",
   alternates: {
     canonical: 'https://www.ekoraglobalconsulting.com/services/',
   },

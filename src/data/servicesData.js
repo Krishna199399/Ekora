@@ -216,7 +216,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Cosmetic Formulation & Product Development Services | EGC',
       description:
-        'Expert cosmetic formulation services for skincare, haircare & beauty products. Custom R&D, ingredient research, testing & commercialization support.',
+        'Expert cosmetic formulation services from EGC for skincare, haircare, and beauty products with custom R&D, testing, and commercialization support.',
       keywords:
         'Cosmetic Research and Product Development, Cosmetic Product Development Services, Cosmetic Formulation Development, Cosmetic R&D Consulting, Custom Cosmetic Formulation, Cosmetic Product Innovation, Cosmetic Laboratory Services, Cosmetic Product Commercialization, Cosmetic Manufacturing Consulting, Cosmetic Product Development Company, Skincare Product Development, Hair Care Formulation Development, Cosmetic Prototype Development, Clean Beauty Formulation, Cosmetic Product Testing, Beauty Product Development, Cosmetic Ingredient Research, Cosmetic Product Scale Up, Cosmetic Manufacturing Readiness, Cosmetic Product Launch Consulting, Cosmetic Science, Cosmetic Chemistry, Formulation Science, Peptide Technology, Bioactive Ingredients, Skincare Innovation, Hair Care Innovation, Clean Beauty, Biotechnology Ingredients, Product Commercialization, Regulatory Compliance, Cosmetic Manufacturing, Stability Testing, Product Development Lifecycle',
     },
@@ -518,7 +518,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Cosmetic Manufacturing Consulting & GMP Services | EGC',
       description:
-        'Transform cosmetic manufacturing operations. Expert GMP compliance, production optimization, quality systems & manufacturing excellence consulting.',
+        "Transform cosmetic manufacturing operations with EGC's GMP compliance, production optimization, quality systems, and manufacturing consulting services.",
     },
   },
 
@@ -838,7 +838,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Cosmetic Plant Setup & Factory Planning Services | EGC',
       description:
-        'Build compliant cosmetic manufacturing facilities. Expert plant setup, factory planning, cleanroom design & GMP facility development consulting.',
+        "Build compliant cosmetic manufacturing facilities with EGC's expert plant setup, factory planning, cleanroom design, and GMP consulting services.",
     },
   },
 
@@ -1173,7 +1173,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Turnkey Cosmetic Manufacturing Project Solutions | EGC',
       description:
-        'Complete turnkey cosmetic manufacturing projects. Engineering, utilities, validation, equipment & production readiness solutions from concept to commissioning.',
+        "Complete turnkey cosmetic manufacturing projects with EGC's engineering, utilities, validation, equipment, and production readiness solutions.",
     },
   },
 
@@ -1461,7 +1461,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Private Label & Contract Manufacturing Consulting | EGC',
       description:
-        'Find, audit & manage private label cosmetic manufacturers. Expert OEM/ODM support, GMP audits, supplier qualification & contract manufacturing guidance.',
+        "Find and manage private label cosmetic manufacturers with EGC's OEM and ODM support, GMP audits, supplier qualification, and manufacturing guidance.",
     },
   },
 
@@ -1764,7 +1764,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Cosmetic Regulatory & Compliance Consulting | EGC',
       description:
-        'Navigate global cosmetic regulations. Expert FDA, MoCRA, EU CPNP, CDSCO compliance, safety assessments & regulatory market access consulting.',
+        "Navigate global cosmetic regulations with EGC's FDA, MoCRA, EU CPNP, CDSCO compliance, safety assessments, and market access consulting.",
     },
   },
 
@@ -2053,7 +2053,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Cosmetic DPR & Business Consulting Services | EGC',
       description:
-        'Investment-ready cosmetic manufacturing projects. Expert DPR preparation, feasibility studies, financial modeling & funding support for manufacturing ventures.',
+        "Investment-ready cosmetic manufacturing projects with EGC's expert DPR preparation, feasibility studies, financial modeling, and funding support.",
     },
   },
 
@@ -2336,7 +2336,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Cosmetic Technical Recruitment & Team Building | EGC',
       description:
-        'Build high-performing cosmetic teams. Expert recruitment for manufacturing, R&D, quality, regulatory & technical roles with workforce planning support.',
+        "Build high-performing cosmetic teams with EGC's recruitment expertise for manufacturing, R&D, quality, regulatory, and technical roles.",
     },
   },
 
@@ -2638,7 +2638,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Cosmetic Packaging Development & Sourcing | EGC',
       description:
-        'Premium cosmetic packaging solutions. Expert packaging strategy, supplier qualification, sustainability consulting & global sourcing services.',
+        "Premium cosmetic packaging solutions from EGC with packaging strategy, supplier qualification, sustainability consulting, and global sourcing services.",
     },
   },
 
@@ -3019,7 +3019,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Cosmetic Ingredient Sourcing Services | EGC',
       description:
-        'Source premium cosmetic ingredients globally. Expert guidance for botanical extracts, active compounds, sustainable raw materials & ingredient evaluation.',
+        "Source premium cosmetic ingredients globally with EGC's expertise in botanical extracts, active compounds, sustainable raw materials, and evaluation.",
     },
   },
 
@@ -3311,7 +3311,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Cosmetic Branding & Go-To-Market Consulting | EGC',
       description:
-        'Launch & scale cosmetic brands successfully. Expert branding, positioning, pricing, packaging, GTM strategy & market expansion consulting services.',
+        "Launch and scale cosmetic brands with EGC's expert branding, positioning, pricing, packaging, go-to-market strategy, and market expansion consulting.",
     },
   },
 
@@ -3613,7 +3613,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Cosmetic scale up & Commercialization Support | EGC',
       description:
-        'Scale cosmetic formulations from lab to production. Expert scale up, validation, manufacturing readiness & commercialization consulting services.',
+        "Scale cosmetic formulations from lab to production with EGC's expertise in scale-up, validation, manufacturing readiness, and commercialization.",
     },
   },
 
@@ -3914,7 +3914,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Cosmetic Export Documentation & Compliance | EGC',
       description:
-        'Export ready cosmetic products globally. Expert SDS preparation, export documentation, labeling reviews & global compliance consulting services.',
+        "Export cosmetic products globally with EGC's expert SDS preparation, export documentation, labeling reviews, and compliance consulting services.",
     },
   },
 
@@ -4232,7 +4232,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Cosmetic Stability Testing & Shelf Life Validation | EGC',
       description:
-        'Validate cosmetic product stability & shelf life. Expert stability testing, packaging compatibility, performance validation & regulatory compliance.',
+        "Validate cosmetic product stability and shelf life with EGC's expert testing, packaging compatibility, performance validation, and regulatory support.",
     },
   },
 
@@ -4538,7 +4538,7 @@ export const SERVICES_DATA = [
     meta: {
       title: 'Cosmetic Innovation & R&D Productivity Consulting | EGC',
       description:
-        'Accelerate cosmetic product development with AI, biotechnology & digital systems. Expert innovation consulting, R&D optimization & productivity solutions.',
+        "Accelerate cosmetic product development with AI, biotechnology, and digital systems through EGC's innovation consulting and R&D productivity solutions.",
     },
   },
 ];

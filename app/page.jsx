@@ -10,9 +10,9 @@ import FAQ from '../src/components/FAQ';
 import ContactForm from '../src/components/ContactForm';
 
 export const metadata = {
-  title: 'Cosmetic Industrial Consultants | EGC Ekora Global Consulting',
+  title: 'Cosmetic Consulting Firm | EGC Ekora Global Consulting',
   description:
-    'EGC Ekora Global Consulting helps cosmetic brands and manufacturers with product development, factory setup, manufacturing, compliance, and growth.',
+    'EGC Ekora Global Consulting is a cosmetic consulting firm offering expert services in formulation R&D, plant setup, GMP compliance, manufacturing, and global brand growth.',
   alternates: {
     canonical: 'https://www.ekoraglobalconsulting.com/',
   },

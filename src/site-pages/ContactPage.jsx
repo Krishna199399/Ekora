@@ -33,11 +33,30 @@ const STATS = [
   { value: '48h',  label: 'Response Time' },
 ];
 
+const DIAL_CODES = [
+  { code: '+91',  flag: '🇮🇳', label: 'IN' },
+  { code: '+1',   flag: '🇺🇸', label: 'US' },
+  { code: '+44',  flag: '🇬🇧', label: 'UK' },
+  { code: '+971', flag: '🇦🇪', label: 'AE' },
+  { code: '+966', flag: '🇸🇦', label: 'SA' },
+  { code: '+65',  flag: '🇸🇬', label: 'SG' },
+  { code: '+27',  flag: '🇿🇦', label: 'ZA' },
+  { code: '+61',  flag: '🇦🇺', label: 'AU' },
+  { code: '+49',  flag: '🇩🇪', label: 'DE' },
+  { code: '+33',  flag: '🇫🇷', label: 'FR' },
+  { code: '+86',  flag: '🇨🇳', label: 'CN' },
+  { code: '+81',  flag: '🇯🇵', label: 'JP' },
+  { code: '+55',  flag: '🇧🇷', label: 'BR' },
+  { code: '+52',  flag: '🇲🇽', label: 'MX' },
+  { code: '+60',  flag: '🇲🇾', label: 'MY' },
+];
+
 /* ─── Main Component ───────────────────────────────────── */
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '', email: '', company: '', phone: '', country: '', interest: '', project: ''
   });
+  const [dialCode, setDialCode] = useState('+91');
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -71,6 +90,7 @@ export default function ContactPage() {
 
   const handleReset = () => {
     setFormData({ name: '', email: '', company: '', phone: '', country: '', interest: '', project: '' });
+    setDialCode('+91');
     setFormErrors({});
     setIsSubmitted(false);
   };
@@ -255,11 +275,54 @@ export default function ContactPage() {
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
                         <label style={{ fontSize: '12.5px', fontWeight: 700, color: DEEP, letterSpacing: '0.3px' }}>Phone Number</label>
-                        <div style={{ position: 'relative' }}>
-                          <Phone size={15} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: focusedField === 'phone' ? GOLD : '#9e94ae', pointerEvents: 'none', transition: 'color 0.2s' }} />
-                          <input type="text" name="phone" id="phone" value={formData.phone} onChange={handleInputChange}
+                        <div style={{
+                          display: 'flex',
+                          border: `1.5px solid ${focusedField === 'phone' ? GOLD : 'rgba(181,137,59,0.2)'}`,
+                          borderRadius: '10px',
+                          overflow: 'hidden',
+                          background: focusedField === 'phone' ? WHITE : CREAM,
+                          transition: 'all 0.25s ease',
+                          boxShadow: focusedField === 'phone' ? `0 0 0 3px ${GOLD}18` : 'none',
+                        }}>
+                          <select
+                            value={dialCode}
+                            onChange={(e) => setDialCode(e.target.value)}
+                            onFocus={() => setFocusedField('phone')}
+                            onBlur={() => setFocusedField(null)}
+                            style={{
+                              flexShrink: 0,
+                              width: '84px',
+                              padding: '13px 4px',
+                              border: 'none',
+                              borderRight: `1px solid rgba(181,137,59,0.2)`,
+                              background: 'transparent',
+                              fontSize: '12px',
+                              fontWeight: 700,
+                              color: DEEP,
+                              outline: 'none',
+                              cursor: 'pointer',
+                            }}
+                          >
+                            {DIAL_CODES.map((d) => (
+                              <option key={d.code} value={d.code}>{d.flag} {d.code}</option>
+                            ))}
+                          </select>
+                          <input
+                            type="tel" name="phone" id="phone"
+                            value={formData.phone} onChange={handleInputChange}
                             onFocus={() => setFocusedField('phone')} onBlur={() => setFocusedField(null)}
-                            placeholder="+91 00000 00000" style={inputStyle('phone')} />
+                            placeholder="00000 00000"
+                            style={{
+                              flex: 1, minWidth: 0,
+                              padding: '13px 14px',
+                              border: 'none',
+                              fontSize: '14px',
+                              fontFamily: 'var(--font-sans)',
+                              color: DEEP,
+                              background: 'transparent',
+                              outline: 'none',
+                            }}
+                          />
                         </div>
                       </div>
                     </div>
