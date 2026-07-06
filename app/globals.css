@@ -641,4 +641,18 @@ body::-webkit-scrollbar {
   transform: translateY(-3px);
 }
 
+/* ── Liquid Bubble Cursor: body class override ──────────────────────────── */
+/* All other cursor styles live in LuxuryCursor.css imported by the component */
+body.lc-active,
+body.lc-active * {
+  cursor: none !important;
+}
+
+
+
+
+
+
+
+
 

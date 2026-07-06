@@ -9,6 +9,7 @@ import OfficeMapSection from '../src/components/OfficeMapSection';
 import FooterReveal from '../src/components/FooterReveal';
 import { useConsultationModal } from '../src/context/ConsultationModalContext';
 import ConsultationModal from '../src/components/ConsultationModal';
+import LuxuryCursor from '../src/components/LuxuryCursor';
 
 export default function ClientWrapper({ children }) {
   const pathname = usePathname();
@@ -72,6 +73,13 @@ export default function ClientWrapper({ children }) {
 
   return (
     <div className="app-container" style={{ position: 'relative', minHeight: '100vh' }}>
+      <LuxuryCursor
+        bubbleSize={56}
+        dotSize={8}
+        trail={true}
+        ripple={true}
+        glowSize={140}
+      />
       <Navbar />
 
       {/* ── Main content — sits above the fixed footer ── */}
