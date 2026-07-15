@@ -227,7 +227,7 @@ export default function AtAGlance() {
               transition={{ type: 'spring', stiffness: 150, damping: 20 }}
             >
               <img
-                src="/egc-science-creates-beauty-banner.png"
+                src="/egc_collage.png"
                 alt="EGC Cosmetic Science — Where Science Creates Beauty, EGC branded product lineup"
                 style={{
                   position: 'absolute',

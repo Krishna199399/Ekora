@@ -192,7 +192,7 @@ export default function Footer() {
                 {[
                   { label: 'Privacy Policy', href: '/privacy/' },
                   { label: 'Terms & Conditions', href: '/terms-conditions/' },
-                  { label: 'Sitemap', href: '#' }
+                  { label: 'Sitemap', href: '/sitemap.xml' }
                 ].map((t, i) => (
                   <Link key={i} href={t.href} style={{ fontSize: '12.5px', color: 'rgba(255,255,255,0.5)', textDecoration: 'none', transition: 'color 0.2s' }}
                     onMouseEnter={e => e.currentTarget.style.color = GOLD}

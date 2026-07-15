@@ -44,6 +44,7 @@ dist-ssr
 public_backup/
 src/assets/
 
-# Deployment ZIPs
+# Deployment ZIPs (DON'T COMMIT THESE!)
 hostinger-*.zip
+hostinger-deploy.zip
 main-files.zip
