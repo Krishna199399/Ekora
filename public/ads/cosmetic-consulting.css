@@ -506,6 +506,9 @@ ul { list-style: none; }
   box-shadow: var(--shadow-gold);
   transition: var(--transition);
   text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .btn-gold:hover {
   transform: translateY(-3px);
@@ -529,6 +532,9 @@ ul { list-style: none; }
   backdrop-filter: blur(6px);
   transition: var(--transition);
   text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .btn-outline-white:hover {
   background: rgba(255,255,255,0.12);
@@ -1439,6 +1445,8 @@ ul { list-style: none; }
   box-shadow: var(--shadow-gold);
   transition: var(--transition);
   margin-top: 8px;
+  text-align: center;
+  white-space: nowrap;
 }
 .btn-submit:hover {
   transform: translateY(-2px);
