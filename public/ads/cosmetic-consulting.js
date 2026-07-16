@@ -236,7 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const spinner = submitBtn.querySelector('.spinner');
 
       const validate = (input) => {
-        const errorEl = input.parentElement.querySelector('.error-msg');
+        const formGroup = input.closest('.form-group');
+        const errorEl = formGroup ? formGroup.querySelector('.error-msg') : null;
         let valid = true;
         let msg = '';
 
@@ -294,9 +295,12 @@ document.addEventListener('DOMContentLoaded', () => {
         spinner.style.display = 'inline-block';
         btnLabel.textContent = 'Submitting...';
 
+        const dialCodeEl = form.querySelector('[name="dial_code"]');
+        const dialCode = dialCodeEl ? dialCodeEl.value : '';
+        const phoneVal = form.querySelector('[name="phone"], #phone').value;
         const formData = {
           name: form.querySelector('[name="name"], #name').value,
-          phone: form.querySelector('[name="phone"], #phone').value,
+          phone: phoneVal ? `${dialCode} ${phoneVal}` : '',
           email: form.querySelector('[name="email"], #email').value,
           lookingFor: form.querySelector('[name="looking-for"], #looking-for').value,
           details: form.querySelector('[name="details"], #details').value

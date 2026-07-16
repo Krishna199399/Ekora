@@ -188,7 +188,7 @@ export default function Footer() {
               <span style={{ fontSize: '12.5px', color: 'rgba(255,255,255,0.5)' }}>
                 © {new Date().getFullYear()} EGC Ekora Global Consulting Pvt. Ltd. All Rights Reserved.
               </span>
-              <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+              <div style={{ display: 'flex', gap: '24px', alignItems: 'center', flexWrap: 'wrap' }} className="ft-copyright-links">
                 {[
                   { label: 'Privacy Policy', href: '/privacy/' },
                   { label: 'Terms & Conditions', href: '/terms-conditions/' },
@@ -239,21 +239,58 @@ export default function Footer() {
         @media (max-width: 1024px) {
           .ft-main-grid { grid-template-columns: 1.5fr 1fr 1fr !important; gap: 36px !important; }
         }
+        
         /* Small Tablet / Large Mobile */
         @media (max-width: 768px) {
           .ft-main-grid { grid-template-columns: 1fr 1fr !important; gap: 28px !important; }
-          .ft-copyright { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
-          footer > div > div { padding-left: 20px !important; padding-right: 20px !important; }
+          .ft-copyright { 
+            flex-direction: column !important; 
+            align-items: flex-start !important; 
+            gap: 16px !important; 
+          }
+          .ft-copyright-links {
+            flex-wrap: wrap !important;
+            gap: 16px !important;
+          }
+          footer > div { 
+            padding-left: 24px !important; 
+            padding-right: 24px !important;
+            padding-top: 60px !important;
+          }
         }
+        
         /* Mobile */
         @media (max-width: 480px) {
-          .ft-main-grid { grid-template-columns: 1fr !important; }
+          .ft-main-grid { 
+            grid-template-columns: 1fr !important; 
+            gap: 32px !important;
+          }
+          footer > div { 
+            padding-left: 20px !important; 
+            padding-right: 20px !important;
+            padding-top: 50px !important;
+            padding-bottom: 30px !important;
+          }
+          .ft-copyright {
+            margin-top: 40px !important;
+            padding-top: 20px !important;
+          }
+          .ft-copyright-links {
+            width: 100% !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+          }
         }
+        
+        /* Back to Top Button Mobile */
         @media (max-width: 680px) {
-          footer { padding-bottom: 70px; }
+          footer { padding-bottom: 80px !important; }
           .ft-back-to-top {
-            bottom: calc(76px + env(safe-area-inset-bottom)) !important;
-            right: 16px !important;
+            bottom: calc(80px + env(safe-area-inset-bottom)) !important;
+            right: 20px !important;
+            width: 44px !important;
+            height: 44px !important;
           }
         }
       `}} />

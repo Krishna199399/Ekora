@@ -1783,32 +1783,43 @@ ul { list-style: none; }
 .phone-input-wrapper {
   display: flex;
   align-items: stretch;
-  border: 1.5px solid #d0d5dd;
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--radius-sm);
   overflow: hidden;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  background: #fff;
+  background: rgba(255,255,255,0.05);
 }
 .phone-input-wrapper:focus-within {
   border-color: var(--gold);
   box-shadow: 0 0 0 3px rgba(197,168,128,0.18);
 }
-.dial-code-select {
+.phone-input-wrapper select.dial-code-select {
   flex-shrink: 0;
-  width: 86px;
-  padding: 0 6px;
+  width: 90px;
+  padding: 12px 8px 12px 12px;
   border: none;
-  border-right: 1.5px solid #d0d5dd;
-  background: #f7f9fc;
-  font-size: 12px;
-  font-weight: 700;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0;
+  background: rgba(255,255,255,0.08);
+  font-size: 13px;
+  font-weight: 600;
   font-family: var(--font-body);
-  color: var(--navy);
+  color: var(--white);
   outline: none;
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
-  text-align: center;
+  text-align: left;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  background-size: 16px;
+  padding-right: 24px;
+}
+.phone-input-wrapper select.dial-code-select option {
+  background: var(--navy);
+  color: var(--white);
+  padding: 8px;
 }
 .phone-input-wrapper input[type="tel"] {
   flex: 1;
@@ -1816,11 +1827,16 @@ ul { list-style: none; }
   border: none !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  padding: 12px 14px;
+  padding: 12px 16px;
   font-size: 14px;
+  font-weight: 500;
   font-family: var(--font-body);
-  color: var(--text-dark);
+  color: var(--white);
   background: transparent;
   outline: none;
+  letter-spacing: 0.3px;
+}
+.phone-input-wrapper input[type="tel"]::placeholder {
+  color: rgba(255,255,255,0.28);
 }
 
